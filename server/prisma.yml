@@ -1,0 +1,2 @@
+endpoint: https://us1.prisma.sh/kg-ohearon/prisma-test/dev
+datamodel: datamodel.prisma

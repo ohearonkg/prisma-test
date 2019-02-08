@@ -1,0 +1,9 @@
+{
+  "name": "prisma-test-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "prisma": "^1.26.4"
+  }
+}
