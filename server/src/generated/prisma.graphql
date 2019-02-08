@@ -1,5 +1,9 @@
 # source: https://us1.prisma.sh/kg-ohearon/prisma-test/dev
-# timestamp: Fri Feb 08 2019 11:10:51 GMT-0400 (Atlantic Standard Time)
+# timestamp: Fri Feb 08 2019 17:06:36 GMT-0400 (Atlantic Standard Time)
+
+type AggregateProgram {
+  count: Int!
+}
 
 type AggregateUser {
   count: Int!
@@ -17,11 +21,17 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
+  createProgram(data: ProgramCreateInput!): Program!
   createUser(data: UserCreateInput!): User!
+  updateProgram(data: ProgramUpdateInput!, where: ProgramWhereUniqueInput!): Program
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  deleteProgram(where: ProgramWhereUniqueInput!): Program
   deleteUser(where: UserWhereUniqueInput!): User
+  upsertProgram(where: ProgramWhereUniqueInput!, create: ProgramCreateInput!, update: ProgramUpdateInput!): Program!
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  updateManyPrograms(data: ProgramUpdateManyMutationInput!, where: ProgramWhereInput): BatchPayload!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  deleteManyPrograms(where: ProgramWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
 }
 
@@ -52,9 +62,202 @@ type PageInfo {
   endCursor: String
 }
 
+type Program implements Node {
+  id: ID!
+  name: String!
+  user: User!
+}
+
+"""A connection to a list of items."""
+type ProgramConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ProgramEdge]!
+  aggregate: AggregateProgram!
+}
+
+input ProgramCreateInput {
+  name: String!
+  user: UserCreateOneInput!
+}
+
+"""An edge in a connection."""
+type ProgramEdge {
+  """The item at the end of the edge."""
+  node: Program!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ProgramOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ProgramPreviousValues {
+  id: ID!
+  name: String!
+}
+
+type ProgramSubscriptionPayload {
+  mutation: MutationType!
+  node: Program
+  updatedFields: [String!]
+  previousValues: ProgramPreviousValues
+}
+
+input ProgramSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProgramSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProgramSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProgramSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ProgramWhereInput
+}
+
+input ProgramUpdateInput {
+  name: String
+  user: UserUpdateOneRequiredInput
+}
+
+input ProgramUpdateManyMutationInput {
+  name: String
+}
+
+input ProgramWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProgramWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProgramWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProgramWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  user: UserWhereInput
+}
+
+input ProgramWhereUniqueInput {
+  id: ID
+}
+
 type Query {
+  programs(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Program]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  program(where: ProgramWhereUniqueInput!): Program
   user(where: UserWhereUniqueInput!): User
+  programsConnection(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProgramConnection!
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
 
   """Fetches an object given its ID"""
@@ -65,6 +268,7 @@ type Query {
 }
 
 type Subscription {
+  program(where: ProgramSubscriptionWhereInput): ProgramSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
 }
 
@@ -85,6 +289,11 @@ type UserConnection {
 
 input UserCreateInput {
   name: String!
+}
+
+input UserCreateOneInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
 }
 
 """An edge in a connection."""
@@ -151,12 +360,28 @@ input UserSubscriptionWhereInput {
   node: UserWhereInput
 }
 
+input UserUpdateDataInput {
+  name: String
+}
+
 input UserUpdateInput {
   name: String
 }
 
 input UserUpdateManyMutationInput {
   name: String
+}
+
+input UserUpdateOneRequiredInput {
+  create: UserCreateInput
+  connect: UserWhereUniqueInput
+  update: UserUpdateDataInput
+  upsert: UserUpsertNestedInput
+}
+
+input UserUpsertNestedInput {
+  update: UserUpdateDataInput!
+  create: UserCreateInput!
 }
 
 input UserWhereInput {

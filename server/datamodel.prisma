@@ -2,3 +2,9 @@ type User {
   id: ID! @unique
   name: String!
 }
+
+type Program {
+  id: ID! @unique
+  name: String!
+  user: User!
+}
