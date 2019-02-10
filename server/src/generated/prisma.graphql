@@ -1,5 +1,13 @@
 # source: https://us1.prisma.sh/kg-ohearon/prisma-test/dev
-# timestamp: Fri Feb 08 2019 17:06:36 GMT-0400 (Atlantic Standard Time)
+# timestamp: Sun Feb 10 2019 11:04:23 GMT-0400 (Atlantic Standard Time)
+
+type AggregateExercise {
+  count: Int!
+}
+
+type AggregateExerciseType {
+  count: Int!
+}
 
 type AggregateProgram {
   count: Int!
@@ -14,6 +22,403 @@ type BatchPayload {
   count: Long!
 }
 
+type Exercise implements Node {
+  id: ID!
+  name: String!
+  exerciseType: ExerciseType!
+}
+
+"""A connection to a list of items."""
+type ExerciseConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ExerciseEdge]!
+  aggregate: AggregateExercise!
+}
+
+input ExerciseCreateInput {
+  name: String!
+  exerciseType: ExerciseTypeCreateOneInput!
+}
+
+"""An edge in a connection."""
+type ExerciseEdge {
+  """The item at the end of the edge."""
+  node: Exercise!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ExerciseOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ExercisePreviousValues {
+  id: ID!
+  name: String!
+}
+
+type ExerciseSubscriptionPayload {
+  mutation: MutationType!
+  node: Exercise
+  updatedFields: [String!]
+  previousValues: ExercisePreviousValues
+}
+
+input ExerciseSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ExerciseSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ExerciseSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ExerciseSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ExerciseWhereInput
+}
+
+type ExerciseType implements Node {
+  id: ID!
+  name: String!
+}
+
+"""A connection to a list of items."""
+type ExerciseTypeConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ExerciseTypeEdge]!
+  aggregate: AggregateExerciseType!
+}
+
+input ExerciseTypeCreateInput {
+  name: String!
+}
+
+input ExerciseTypeCreateOneInput {
+  create: ExerciseTypeCreateInput
+  connect: ExerciseTypeWhereUniqueInput
+}
+
+"""An edge in a connection."""
+type ExerciseTypeEdge {
+  """The item at the end of the edge."""
+  node: ExerciseType!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum ExerciseTypeOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type ExerciseTypePreviousValues {
+  id: ID!
+  name: String!
+}
+
+type ExerciseTypeSubscriptionPayload {
+  mutation: MutationType!
+  node: ExerciseType
+  updatedFields: [String!]
+  previousValues: ExerciseTypePreviousValues
+}
+
+input ExerciseTypeSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ExerciseTypeSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ExerciseTypeSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ExerciseTypeSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: ExerciseTypeWhereInput
+}
+
+input ExerciseTypeUpdateDataInput {
+  name: String
+}
+
+input ExerciseTypeUpdateInput {
+  name: String
+}
+
+input ExerciseTypeUpdateManyMutationInput {
+  name: String
+}
+
+input ExerciseTypeUpdateOneRequiredInput {
+  create: ExerciseTypeCreateInput
+  connect: ExerciseTypeWhereUniqueInput
+  update: ExerciseTypeUpdateDataInput
+  upsert: ExerciseTypeUpsertNestedInput
+}
+
+input ExerciseTypeUpsertNestedInput {
+  update: ExerciseTypeUpdateDataInput!
+  create: ExerciseTypeCreateInput!
+}
+
+input ExerciseTypeWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ExerciseTypeWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ExerciseTypeWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ExerciseTypeWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+}
+
+input ExerciseTypeWhereUniqueInput {
+  id: ID
+}
+
+input ExerciseUpdateInput {
+  name: String
+  exerciseType: ExerciseTypeUpdateOneRequiredInput
+}
+
+input ExerciseUpdateManyMutationInput {
+  name: String
+}
+
+input ExerciseWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ExerciseWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ExerciseWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ExerciseWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  exerciseType: ExerciseTypeWhereInput
+}
+
+input ExerciseWhereUniqueInput {
+  id: ID
+}
+
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
@@ -21,18 +426,30 @@ Long can represent values between -(2^63) and 2^63 - 1.
 scalar Long
 
 type Mutation {
-  createProgram(data: ProgramCreateInput!): Program!
   createUser(data: UserCreateInput!): User!
-  updateProgram(data: ProgramUpdateInput!, where: ProgramWhereUniqueInput!): Program
+  createProgram(data: ProgramCreateInput!): Program!
+  createExercise(data: ExerciseCreateInput!): Exercise!
+  createExerciseType(data: ExerciseTypeCreateInput!): ExerciseType!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
-  deleteProgram(where: ProgramWhereUniqueInput!): Program
+  updateProgram(data: ProgramUpdateInput!, where: ProgramWhereUniqueInput!): Program
+  updateExercise(data: ExerciseUpdateInput!, where: ExerciseWhereUniqueInput!): Exercise
+  updateExerciseType(data: ExerciseTypeUpdateInput!, where: ExerciseTypeWhereUniqueInput!): ExerciseType
   deleteUser(where: UserWhereUniqueInput!): User
-  upsertProgram(where: ProgramWhereUniqueInput!, create: ProgramCreateInput!, update: ProgramUpdateInput!): Program!
+  deleteProgram(where: ProgramWhereUniqueInput!): Program
+  deleteExercise(where: ExerciseWhereUniqueInput!): Exercise
+  deleteExerciseType(where: ExerciseTypeWhereUniqueInput!): ExerciseType
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
-  updateManyPrograms(data: ProgramUpdateManyMutationInput!, where: ProgramWhereInput): BatchPayload!
+  upsertProgram(where: ProgramWhereUniqueInput!, create: ProgramCreateInput!, update: ProgramUpdateInput!): Program!
+  upsertExercise(where: ExerciseWhereUniqueInput!, create: ExerciseCreateInput!, update: ExerciseUpdateInput!): Exercise!
+  upsertExerciseType(where: ExerciseTypeWhereUniqueInput!, create: ExerciseTypeCreateInput!, update: ExerciseTypeUpdateInput!): ExerciseType!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
-  deleteManyPrograms(where: ProgramWhereInput): BatchPayload!
+  updateManyPrograms(data: ProgramUpdateManyMutationInput!, where: ProgramWhereInput): BatchPayload!
+  updateManyExercises(data: ExerciseUpdateManyMutationInput!, where: ExerciseWhereInput): BatchPayload!
+  updateManyExerciseTypes(data: ExerciseTypeUpdateManyMutationInput!, where: ExerciseTypeWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyPrograms(where: ProgramWhereInput): BatchPayload!
+  deleteManyExercises(where: ExerciseWhereInput): BatchPayload!
+  deleteManyExerciseTypes(where: ExerciseTypeWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -80,7 +497,16 @@ type ProgramConnection {
 
 input ProgramCreateInput {
   name: String!
-  user: UserCreateOneInput!
+  user: UserCreateOneWithoutProgramsInput!
+}
+
+input ProgramCreateManyWithoutUserInput {
+  create: [ProgramCreateWithoutUserInput!]
+  connect: [ProgramWhereUniqueInput!]
+}
+
+input ProgramCreateWithoutUserInput {
+  name: String!
 }
 
 """An edge in a connection."""
@@ -106,6 +532,97 @@ enum ProgramOrderByInput {
 type ProgramPreviousValues {
   id: ID!
   name: String!
+}
+
+input ProgramScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ProgramScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ProgramScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ProgramScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
 }
 
 type ProgramSubscriptionPayload {
@@ -149,11 +666,47 @@ input ProgramSubscriptionWhereInput {
 
 input ProgramUpdateInput {
   name: String
-  user: UserUpdateOneRequiredInput
+  user: UserUpdateOneRequiredWithoutProgramsInput
+}
+
+input ProgramUpdateManyDataInput {
+  name: String
 }
 
 input ProgramUpdateManyMutationInput {
   name: String
+}
+
+input ProgramUpdateManyWithoutUserInput {
+  create: [ProgramCreateWithoutUserInput!]
+  connect: [ProgramWhereUniqueInput!]
+  set: [ProgramWhereUniqueInput!]
+  disconnect: [ProgramWhereUniqueInput!]
+  delete: [ProgramWhereUniqueInput!]
+  update: [ProgramUpdateWithWhereUniqueWithoutUserInput!]
+  updateMany: [ProgramUpdateManyWithWhereNestedInput!]
+  deleteMany: [ProgramScalarWhereInput!]
+  upsert: [ProgramUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input ProgramUpdateManyWithWhereNestedInput {
+  where: ProgramScalarWhereInput!
+  data: ProgramUpdateManyDataInput!
+}
+
+input ProgramUpdateWithoutUserDataInput {
+  name: String
+}
+
+input ProgramUpdateWithWhereUniqueWithoutUserInput {
+  where: ProgramWhereUniqueInput!
+  data: ProgramUpdateWithoutUserDataInput!
+}
+
+input ProgramUpsertWithWhereUniqueWithoutUserInput {
+  where: ProgramWhereUniqueInput!
+  update: ProgramUpdateWithoutUserDataInput!
+  create: ProgramCreateWithoutUserInput!
 }
 
 input ProgramWhereInput {
@@ -253,12 +806,18 @@ input ProgramWhereUniqueInput {
 }
 
 type Query {
-  programs(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Program]!
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
-  program(where: ProgramWhereUniqueInput!): Program
+  programs(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Program]!
+  exercises(where: ExerciseWhereInput, orderBy: ExerciseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Exercise]!
+  exerciseTypes(where: ExerciseTypeWhereInput, orderBy: ExerciseTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ExerciseType]!
   user(where: UserWhereUniqueInput!): User
-  programsConnection(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProgramConnection!
+  program(where: ProgramWhereUniqueInput!): Program
+  exercise(where: ExerciseWhereUniqueInput!): Exercise
+  exerciseType(where: ExerciseTypeWhereUniqueInput!): ExerciseType
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  programsConnection(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ProgramConnection!
+  exercisesConnection(where: ExerciseWhereInput, orderBy: ExerciseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ExerciseConnection!
+  exerciseTypesConnection(where: ExerciseTypeWhereInput, orderBy: ExerciseTypeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ExerciseTypeConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -268,13 +827,16 @@ type Query {
 }
 
 type Subscription {
-  program(where: ProgramSubscriptionWhereInput): ProgramSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  program(where: ProgramSubscriptionWhereInput): ProgramSubscriptionPayload
+  exercise(where: ExerciseSubscriptionWhereInput): ExerciseSubscriptionPayload
+  exerciseType(where: ExerciseTypeSubscriptionWhereInput): ExerciseTypeSubscriptionPayload
 }
 
 type User implements Node {
   id: ID!
   name: String!
+  programs(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Program!]
 }
 
 """A connection to a list of items."""
@@ -289,11 +851,16 @@ type UserConnection {
 
 input UserCreateInput {
   name: String!
+  programs: ProgramCreateManyWithoutUserInput
 }
 
-input UserCreateOneInput {
-  create: UserCreateInput
+input UserCreateOneWithoutProgramsInput {
+  create: UserCreateWithoutProgramsInput
   connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutProgramsInput {
+  name: String!
 }
 
 """An edge in a connection."""
@@ -360,28 +927,29 @@ input UserSubscriptionWhereInput {
   node: UserWhereInput
 }
 
-input UserUpdateDataInput {
-  name: String
-}
-
 input UserUpdateInput {
   name: String
+  programs: ProgramUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
   name: String
 }
 
-input UserUpdateOneRequiredInput {
-  create: UserCreateInput
+input UserUpdateOneRequiredWithoutProgramsInput {
+  create: UserCreateWithoutProgramsInput
   connect: UserWhereUniqueInput
-  update: UserUpdateDataInput
-  upsert: UserUpsertNestedInput
+  update: UserUpdateWithoutProgramsDataInput
+  upsert: UserUpsertWithoutProgramsInput
 }
 
-input UserUpsertNestedInput {
-  update: UserUpdateDataInput!
-  create: UserCreateInput!
+input UserUpdateWithoutProgramsDataInput {
+  name: String
+}
+
+input UserUpsertWithoutProgramsInput {
+  update: UserUpdateWithoutProgramsDataInput!
+  create: UserCreateWithoutProgramsInput!
 }
 
 input UserWhereInput {
@@ -473,6 +1041,9 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   name_not_ends_with: String
+  programs_every: ProgramWhereInput
+  programs_some: ProgramWhereInput
+  programs_none: ProgramWhereInput
 }
 
 input UserWhereUniqueInput {

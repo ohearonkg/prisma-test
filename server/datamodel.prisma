@@ -1,10 +1,22 @@
 type User {
   id: ID! @unique
   name: String!
+  programs: [Program]!
 }
 
 type Program {
   id: ID! @unique
   name: String!
   user: User!
+}
+
+type Exercise {
+  id: ID! @unique
+  name: String!
+  exerciseType: ExerciseType!
+}
+
+type ExerciseType {
+  id: ID! @unique
+  name: String!
 }

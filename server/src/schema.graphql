@@ -1,7 +1,27 @@
+# import * from './generated/prisma.graphql'
+
 type Mutation {
-  hi: String
+  createUser(data: UserCreateInput!): User!
+  createProgram(data: ProgramCreateInput!): Program!
 }
 
 type Query {
-  hi: String
+  users(
+    where: UserWhereInput
+    orderBy: UserOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [User]!
+  programs(
+    where: ProgramWhereInput
+    orderBy: ProgramOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Program]!
 }
