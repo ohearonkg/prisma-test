@@ -1,3 +1,10 @@
+enum ExerciseType {
+  BODYWEIGHT
+  ASSISTED
+  WEIGHTED
+  CARDIO
+}
+
 type User {
   id: ID! @unique
   name: String!
@@ -14,9 +21,4 @@ type Exercise {
   id: ID! @unique
   name: String!
   exerciseType: ExerciseType!
-}
-
-type ExerciseType {
-  id: ID! @unique
-  name: String!
 }

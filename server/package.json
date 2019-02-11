@@ -1,5 +1,5 @@
 {
-  "name": "prisma-test-backend",
+  "name": "prisma-test-server",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
