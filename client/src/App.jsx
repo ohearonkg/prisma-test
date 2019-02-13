@@ -1,36 +1,16 @@
-import { Query } from "react-apollo";
-import React from "react";
-import gql from "graphql-tag";
+import React, { Suspense, lazy } from "react";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+
+const Users = lazy(() => import("./pages/Users"));
 
 const App = () => (
-  <Query query={GET_USERS_QUERY}>
-    {({ data: { users }, error, loading }) => {
-      if (loading) {
-        return <div>Loading</div>;
-      }
-      if (error) {
-        return <div> Erro</div>;
-      }
-      return (
-        <div>
-          <ul>
-            {users.map(user => (
-              <li key={user.id}> {user.name} </li>
-            ))}
-          </ul>
-        </div>
-      );
-    }}
-  </Query>
+  <Router>
+    <Suspense fallback={<div />}>
+      <Switch>
+        <Route path="/" exact render={props => <Users {...props} />} />
+      </Switch>
+    </Suspense>
+  </Router>
 );
 
 export default App;
-
-const GET_USERS_QUERY = gql`
-  query GET_USERS_QUERY {
-    users {
-      id
-      name
-    }
-  }
-`;
