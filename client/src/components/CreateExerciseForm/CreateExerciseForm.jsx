@@ -1,6 +1,7 @@
-import FormTextInput from "../TextInput/TextInput";
 import PropTypes from "prop-types";
 import React from "react";
+import TextArea from "../TextArea/TextArea";
+import TextInput from "../TextInput/TextInput";
 
 const CreateExerciseForm = ({ onSubmitFunction }) => {
   /**
@@ -18,12 +19,12 @@ const CreateExerciseForm = ({ onSubmitFunction }) => {
 
   return (
     <form onSubmit={handleSumbit}>
-      <FormTextInput
+      <TextInput
         placeholder="e.g. Bench Press"
         id="exerciseName"
         label="Exercise Name"
       />
-      <FormTextInput
+      <TextArea
         placeholder="Lay on a flat bench.."
         id="exerciseDescription"
         label="Exercise Description"

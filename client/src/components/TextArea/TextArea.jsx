@@ -11,6 +11,7 @@ const StyledTextArea = styled.textarea`
   border: 1px solid #c4c4c4;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
+  resize: none;
 
   &:focus {
     outline: none;

@@ -28,6 +28,23 @@
         }
       ]
     },
+    "src/components/TextArea/TextArea.mdx": {
+      "name": "Text Area",
+      "id": "5647bdcde7dc0f19e3dd86d61035ebdf",
+      "filepath": "src/components/TextArea/TextArea.mdx",
+      "link": null,
+      "slug": "src-components-text-area-text-area",
+      "route": "/src-components-text-area-text-area",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "text-input",
+          "value": "Text Input"
+        }
+      ]
+    },
     "src/components/TextInput/TextInput.mdx": {
       "name": "Text Input",
       "id": "6db715915c5fca63d1112cfa9cde5bae",
