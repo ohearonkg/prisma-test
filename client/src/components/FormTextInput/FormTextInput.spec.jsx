@@ -5,10 +5,17 @@ import React from "react";
 
 const samplePlaceHolder = "SAMPLE_PLACEHOLDER";
 const sampleInput = "SAMPLE_INPUT";
+const sampleLabel = "SAMPLE_LABEL";
 const sampleId = "SAMPLE_ID";
 
 const setup = () =>
-  render(<FormTextInput placeholder={samplePlaceHolder} id={sampleId} />);
+  render(
+    <FormTextInput
+      placeholder={samplePlaceHolder}
+      id={sampleId}
+      label={sampleLabel}
+    />
+  );
 
 afterEach(cleanup);
 
@@ -27,6 +34,14 @@ describe("Form Text Input", () => {
   it("Should display the id passed to is id prop", () => {
     const { container } = setup();
     expect(container.querySelector(`#${sampleId}`)).not.toBeNull();
+  });
+
+  /**
+   * Rendering label
+   */
+  it("Should render the label passed to its label prop", () => {
+    const { getByLabelText } = setup();
+    expect(getByLabelText(new RegExp(sampleLabel)));
   });
 
   /**

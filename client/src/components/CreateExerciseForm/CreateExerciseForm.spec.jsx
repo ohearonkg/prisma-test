@@ -31,11 +31,11 @@ describe("Create Exercise Form", () => {
    * Calling onSubmit with required passing required fields
    */
   it("Should pass its onSumbit function exercise name and description", () => {
-    const { getByText, getByPlaceholderText } = setup();
-    fireEvent.change(getByPlaceholderText("Exercise Name"), {
+    const { getByText, getByLabelText } = setup();
+    fireEvent.change(getByLabelText(/Exercise Name/), {
       target: { value: sampleExerciseName }
     });
-    fireEvent.change(getByPlaceholderText("Exercise Description"), {
+    fireEvent.change(getByLabelText(/Exercise Description/), {
       target: { value: sampleExerciseDescription }
     });
     fireEvent.click(getByText("Create"));
