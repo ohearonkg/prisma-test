@@ -1,5 +1,14 @@
 import React, { useState } from "react";
 
+import { Query } from "react-apollo";
+import gql from "graphql-tag";
+
+const GET_EXERCISE_TYPES_QUERY = gql`
+query GET_EXERCISE_TYPES_QUERY {
+  
+}
+`;
+
 const CreateExerciseForm = () => {
   const [formValues, setFormValues] = useState({
     exerciseName: "",

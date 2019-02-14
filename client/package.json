@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --open --port 7777",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test:watch": "jest --watch"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +31,9 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "jest": "^24.1.0",
+    "prop-types": "^15.7.2",
+    "react-testing-library": "^5.8.0",
     "webpack-bundle-analyzer": "^3.0.4"
   }
 }
