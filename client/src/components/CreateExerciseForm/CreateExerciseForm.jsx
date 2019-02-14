@@ -24,7 +24,7 @@ const CreateExerciseForm = ({ onSubmitFunction }) => {
         label="Exercise Name"
       />
       <FormTextInput
-        placeholder="Exercise Description"
+        placeholder="Lay on a flat bench.."
         id="exerciseDescription"
         label="Exercise Description"
       />

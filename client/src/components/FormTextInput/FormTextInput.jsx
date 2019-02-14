@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 
 const StyledInput = styled.input`
+  display: block;
+  width: 100%;
   border-radius: 4px;
   padding: 10px 20px;
   border: 1px solid #c4c4c4;
@@ -17,6 +19,10 @@ const StyledInput = styled.input`
   }
 `;
 
+const StyledLabel = styled.label`
+  display: block;
+`;
+
 const FormTextInput = ({ id, label, placeholder }) => {
   const [value, setValue] = useState("");
 
@@ -24,15 +30,15 @@ const FormTextInput = ({ id, label, placeholder }) => {
     setValue(e.target.value);
   };
   return (
-    <label htmlFor={id}>
-      {label}:
+    <>
+      <StyledLabel htmlFor={id}>{label}</StyledLabel>
       <StyledInput
         id={id}
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
       />
-    </label>
+    </>
   );
 };
 

@@ -9,7 +9,7 @@ import CreateExerciseForm from "./CreateExerciseForm";
 Simple form for exercise creation
 
 <CreateExerciseForm
-  onSubmitFunction={(name, description) =>
-    alert(`Name: ${name} \n Description: ${description}`)
+  onSubmitFunction={({ exerciseName, exerciseDescription }) =>
+    alert(`Name: ${exerciseName} Description: ${exerciseDescription}`)
   }
 />
