@@ -9,16 +9,16 @@ module.exports = {
   entry: {
     app: "./src/index.js"
   },
+  devServer: {
+    contentBase: "./dist"
+  },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-          options: {
-            babelrc: true
-          }
+          loader: "babel-loader"
         }
       }
     ]
@@ -26,8 +26,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(["dist"]),
     new HtmlWebpackPlugin({
-      template: "./index.html",
-      title: "Development"
+      title: "Development",
+      template: "./index.html"
     }),
     new BundleAnalyzerPlugin()
   ],
