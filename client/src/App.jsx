@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState } from "react";
+import React, { Suspense, lazy } from "react";
 import { Route, Router, Switch } from "react-router-dom";
 
 import createBrowserHistory from "history/createBrowserHistory";
@@ -6,9 +6,7 @@ import createBrowserHistory from "history/createBrowserHistory";
 const customHistory = createBrowserHistory();
 
 const Home = lazy(() => import("./pages/Home"));
-const CreateExerciseForm = lazy(() =>
-  import("./components/CreateExerciseForm")
-);
+const CreateExercise = lazy(() => import("./Pages/CreateExercise"));
 
 const App = () => (
   <Router history={customHistory}>
@@ -17,7 +15,7 @@ const App = () => (
         <Route path="/" exact render={props => <Home {...props} />} />
         <Route
           path="/createExercise"
-          render={props => <CreateExerciseForm {...props} />}
+          render={props => <CreateExercise {...props} />}
         />
       </Switch>
     </Suspense>

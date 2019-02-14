@@ -11,6 +11,23 @@
     "themeConfig": {}
   },
   "entries": {
+    "src/components/Button/Button.mdx": {
+      "name": "Button",
+      "id": "2b773349a016959194c905ce6ad9d2d4",
+      "filepath": "src/components/Button/Button.mdx",
+      "link": null,
+      "slug": "src-components-button-button",
+      "route": "/src-components-button-button",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "button",
+          "value": "Button"
+        }
+      ]
+    },
     "src/components/CreateExerciseForm/CreateExerciseForm.mdx": {
       "name": "Create Exercise Form",
       "id": "0efe19513d52e0e9d4736469d5011412",

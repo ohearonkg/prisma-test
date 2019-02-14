@@ -1,3 +1,4 @@
+import Button from "../Button/Button";
 import PropTypes from "prop-types";
 import React from "react";
 import TextArea from "../TextArea/TextArea";
@@ -29,7 +30,7 @@ const CreateExerciseForm = ({ onSubmitFunction }) => {
         id="exerciseDescription"
         label="Exercise Description"
       />
-      <button type="submit"> Create </button>
+      <Button type="submit"> Create </Button>
     </form>
   );
 };

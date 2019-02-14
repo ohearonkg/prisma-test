@@ -21,4 +21,5 @@ type Exercise {
   id: ID! @unique
   name: String!
   exerciseType: ExerciseType!
+  description: String
 }

@@ -6,6 +6,7 @@ import styled from "@emotion/styled";
 const StyledInput = styled.input`
   display: block;
   width: 100%;
+  box-sizing: border-box;
   border-radius: 4px;
   padding: 10px 20px;
   border: 1px solid #c4c4c4;
@@ -21,6 +22,7 @@ const StyledInput = styled.input`
 
 const StyledLabel = styled.label`
   display: block;
+  font-family: "Roboto", sans-serif;
 `;
 
 const TextInput = ({ id, label, placeholder }) => {

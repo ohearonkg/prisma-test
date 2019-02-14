@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 
 const StyledTextArea = styled.textarea`
   display: block;
+  box-sizing: border-box;
   width: 100%;
   border-radius: 4px;
   padding: 10px 20px;
@@ -22,6 +23,7 @@ const StyledTextArea = styled.textarea`
 
 const StyledLabel = styled.label`
   display: block;
+  font-family: "Roboto", sans-serif;
 `;
 
 const TextArea = ({ id, label, placeholder }) => {
