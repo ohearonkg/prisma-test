@@ -1,17 +1,20 @@
-import PropTypes from "prop-types";
-import React from "react";
+import React, { useState } from "react";
 
-const FormTextInput = ({ label }) => (
-  <>
-    <label htmlFor={label} aria-labelledby={label}>
-      {label}
-    </label>
-    <input label={label} id={label} />
-  </>
-);
+import PropTypes from "prop-types";
+
+const FormTextInput = ({ placeholder }) => {
+  const [value, setValue] = useState("");
+
+  const handleChange = e => {
+    setValue(e.target.value);
+  };
+  return (
+    <input placeholder={placeholder} value={value} onChange={handleChange} />
+  );
+};
 
 FormTextInput.propTypes = {
-  label: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired
 };
 
 export default FormTextInput;
