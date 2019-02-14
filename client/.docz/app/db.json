@@ -1,0 +1,32 @@
+{
+  "config": {
+    "title": "Prisma Test Client",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "ordering": "descending",
+    "version": "1.0.0",
+    "repository": null,
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {}
+  },
+  "entries": {
+    "src/components/FormTextInput/FormTextInput.mdx": {
+      "name": "Form Text Input",
+      "id": "85ca35766297801257e28d4fe97fbe5a",
+      "filepath": "src/components/FormTextInput/FormTextInput.mdx",
+      "link": null,
+      "slug": "src-components-form-text-input-form-text-input",
+      "route": "/src-components-form-text-input-form-text-input",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "form-text-input",
+          "value": "Form Text Input"
+        }
+      ]
+    }
+  }
+}

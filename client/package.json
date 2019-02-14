@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack-dev-server --open --port 7777",
     "build": "webpack --mode production",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "docz:dev": "docz dev"
   },
   "author": "",
   "license": "ISC",
@@ -31,6 +32,11 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@emotion/core": "^10.0.7",
+    "@emotion/styled": "^10.0.7",
+    "babel-plugin-emotion": "^10.0.7",
+    "docz": "^0.13.7",
+    "docz-theme-default": "^0.13.7",
     "jest": "^24.1.0",
     "prop-types": "^15.7.2",
     "react-testing-library": "^5.8.0",
