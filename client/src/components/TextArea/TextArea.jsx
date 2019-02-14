@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "@emotion/styled";
 
-const StyledInput = styled.input`
+const StyledTextArea = styled.textarea`
   display: block;
   width: 100%;
   border-radius: 4px;
@@ -23,7 +23,7 @@ const StyledLabel = styled.label`
   display: block;
 `;
 
-const FormTextInput = ({ id, label, placeholder }) => {
+const TextArea = ({ id, label, placeholder }) => {
   const [value, setValue] = useState("");
 
   const handleChange = e => {
@@ -32,7 +32,7 @@ const FormTextInput = ({ id, label, placeholder }) => {
   return (
     <>
       <StyledLabel htmlFor={id}>{label}</StyledLabel>
-      <StyledInput
+      <StyledTextArea
         id={id}
         placeholder={placeholder}
         value={value}
@@ -42,10 +42,10 @@ const FormTextInput = ({ id, label, placeholder }) => {
   );
 };
 
-FormTextInput.propTypes = {
+TextArea.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired
 };
 
-export default FormTextInput;
+export default TextArea;

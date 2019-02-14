@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render } from "react-testing-library";
 
-import FormTextInput from "./FormTextInput";
 import React from "react";
+import TextArea from "./TextArea";
 
 const samplePlaceHolder = "SAMPLE_PLACEHOLDER";
 const sampleInput = "SAMPLE_INPUT";
@@ -10,7 +10,7 @@ const sampleId = "SAMPLE_ID";
 
 const setup = () =>
   render(
-    <FormTextInput
+    <TextArea
       placeholder={samplePlaceHolder}
       id={sampleId}
       label={sampleLabel}
@@ -19,7 +19,7 @@ const setup = () =>
 
 afterEach(cleanup);
 
-describe("Form Text Input", () => {
+describe("Text Area", () => {
   /**
    * Rendering Placeholder
    */
@@ -48,9 +48,9 @@ describe("Form Text Input", () => {
    * Updating the displayed value
    */
   it("Should update its displayed input as the user types", () => {
-    const { getByPlaceholderText, getByValue } = setup();
+    const { getByPlaceholderText, getByText } = setup();
     const input = getByPlaceholderText(samplePlaceHolder);
     fireEvent.change(input, { target: { value: sampleInput } });
-    expect(getByValue(sampleInput));
+    expect(getByText(sampleInput));
   });
 });

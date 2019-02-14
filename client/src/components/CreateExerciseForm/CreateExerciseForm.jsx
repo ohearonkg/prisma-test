@@ -1,4 +1,4 @@
-import FormTextInput from "../FormTextInput/FormTextInput";
+import FormTextInput from "../TextInput/TextInput";
 import PropTypes from "prop-types";
 import React from "react";
 
