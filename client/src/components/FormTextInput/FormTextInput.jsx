@@ -18,23 +18,18 @@ const StyledInput = styled.input`
   }
 `;
 
-const FormTextInput = ({ placeholder }) => {
+const FormTextInput = props => {
   const [value, setValue] = useState("");
 
   const handleChange = e => {
     setValue(e.target.value);
   };
-  return (
-    <StyledInput
-      placeholder={placeholder}
-      value={value}
-      onChange={handleChange}
-    />
-  );
+  return <StyledInput {...props} value={value} onChange={handleChange} />;
 };
 
 FormTextInput.propTypes = {
-  placeholder: PropTypes.string.isRequired
+  placeholder: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 export default FormTextInput;

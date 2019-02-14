@@ -11,6 +11,23 @@
     "themeConfig": {}
   },
   "entries": {
+    "src/components/CreateExerciseForm/CreateExerciseForm.mdx": {
+      "name": "Create Exercise Form",
+      "id": "0efe19513d52e0e9d4736469d5011412",
+      "filepath": "src/components/CreateExerciseForm/CreateExerciseForm.mdx",
+      "link": null,
+      "slug": "src-components-create-exercise-form-create-exercise-form",
+      "route": "/src-components-create-exercise-form-create-exercise-form",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "form-to-create-an-exercise",
+          "value": "Form to create an exercise"
+        }
+      ]
+    },
     "src/components/FormTextInput/FormTextInput.mdx": {
       "name": "Form Text Input",
       "id": "85ca35766297801257e28d4fe97fbe5a",

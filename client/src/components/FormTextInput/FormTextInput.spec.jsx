@@ -5,8 +5,10 @@ import React from "react";
 
 const samplePlaceHolder = "SAMPLE_PLACEHOLDER";
 const sampleInput = "SAMPLE_INPUT";
+const sampleId = "SAMPLE_ID";
 
-const setup = () => render(<FormTextInput placeholder={samplePlaceHolder} />);
+const setup = () =>
+  render(<FormTextInput placeholder={samplePlaceHolder} id={sampleId} />);
 
 afterEach(cleanup);
 
@@ -17,6 +19,14 @@ describe("Form Text Input", () => {
   it("Should display the placeholder passed to its label prop", () => {
     const { getByPlaceholderText } = setup();
     expect(getByPlaceholderText(samplePlaceHolder));
+  });
+
+  /**
+   * Rendering id
+   */
+  it("Should display the id passed to is id prop", () => {
+    const { container } = setup();
+    expect(container.querySelector(`#${sampleId}`)).not.toBeNull();
   });
 
   /**
