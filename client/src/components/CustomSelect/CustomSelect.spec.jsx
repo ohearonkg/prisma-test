@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render } from "react-testing-library";
+import { cleanup, fireEvent, render, wait } from "react-testing-library";
 
 import CustomSelect from "./CustomSelect";
 import React from "react";
@@ -30,19 +30,33 @@ describe("Custom Select", () => {
    * Should close when the user makes a selection
    */
   it("Should close when the user makes a selection", async () => {
-    const { queryAllByText, getByLabelText, getByText } = setup();
+    const { queryAllByText, getByLabelText, getByText, debug } = setup();
     fireEvent.click(getByLabelText("custom-select"));
     fireEvent.click(getByText(sampleOptions[1]));
-    await expect(queryAllByText(sampleOptions[0])).toBeNull();
+    await wait(() => expect(queryAllByText(sampleOptions[0])).toEqual([]));
   });
 
   /**
    * Should display the selected value
    */
-  it("Should display the selected value", () => {
-    const { getByLabelText, getByText } = setup();
+  it("Should display the selected value", async () => {
+    const { getByLabelText, getByText, queryAllByText } = setup();
     fireEvent.click(getByLabelText("custom-select"));
     fireEvent.click(getByText(sampleOptions[1]));
+    await wait(() => expect(queryAllByText(sampleOptions[0])).toEqual([]));
+    await wait(() => expect(queryAllByText(sampleOptions[2])).toEqual([]));
     expect(getByText(sampleOptions[1]));
+  });
+
+  /**
+   * Should close should the user click upon their
+   * currently displayed option
+   */
+  it("Should close should the user click for a upont their currently selected value", async () => {
+    const { getByLabelText, getByText, queryAllByText } = setup();
+    fireEvent.click(getByLabelText("custom-select"));
+    fireEvent.click(getByText(sampleOptions[0]));
+    await wait(() => expect(queryAllByText(sampleOptions[1])).toEqual([]));
+    await wait(() => expect(queryAllByText(sampleOptions[2])).toEqual([]));
   });
 });
