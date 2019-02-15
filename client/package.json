@@ -9,6 +9,21 @@
     "test:watch": "jest --watch",
     "docz:dev": "docz dev"
   },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "testMatch": [
+      "**/*.spec.jsx"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -32,8 +47,10 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/polyfill": "^7.2.5",
     "@emotion/core": "^10.0.7",
     "@emotion/styled": "^10.0.7",
+    "babel-jest": "^24.1.0",
     "babel-plugin-emotion": "^10.0.7",
     "docz": "^0.13.7",
     "docz-theme-default": "^0.13.7",
