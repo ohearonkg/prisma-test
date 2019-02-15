@@ -14,10 +14,11 @@ const GET_EXERCISE_TYPES_QUERY = gql`
 `;
 
 const CreateExercise = () => {
-  const handleSubmit = ({ exerciseName, exerciseDescription }) => {
-    console.log(`Name ${exerciseName}`);
-    console.log(`Description ${exerciseDescription}`);
-  };
+  const handleSubmit = ({
+    exerciseType,
+    exerciseName,
+    exerciseDescription
+  }) => {};
   return (
     <Query query={GET_EXERCISE_TYPES_QUERY}>
       {({ loading, error, data: { __type: enumValues } }) => {
@@ -28,9 +29,14 @@ const CreateExercise = () => {
           return null;
         }
         const exerciseTypes = enumValues.enumValues.map(
-          (exerciseType, index) => ({ name: exerciseType.name, index })
+          exerciseType => exerciseType.name
         );
-        return <CreateExerciseForm onSubmitFunction={handleSubmit} />;
+        return (
+          <CreateExerciseForm
+            onSubmitFunction={handleSubmit}
+            exerciseTypeOptions={exerciseTypes}
+          />
+        );
       }}
     </Query>
   );

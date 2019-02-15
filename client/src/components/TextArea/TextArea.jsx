@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-
 import PropTypes from "prop-types";
+import React from "react";
 import styled from "@emotion/styled";
 
 const StyledTextArea = styled.textarea`
@@ -26,29 +25,24 @@ const StyledLabel = styled.label`
   font-family: "Roboto", sans-serif;
 `;
 
-const TextArea = ({ id, label, placeholder }) => {
-  const [value, setValue] = useState("");
-
-  const handleChange = e => {
-    setValue(e.target.value);
-  };
-  return (
-    <>
-      <StyledLabel htmlFor={id}>{label}</StyledLabel>
-      <StyledTextArea
-        id={id}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleChange}
-      />
-    </>
-  );
-};
+const TextArea = ({ id, label, placeholder, onChangeFunction, value }) => (
+  <>
+    <StyledLabel htmlFor={id}>{label}</StyledLabel>
+    <StyledTextArea
+      id={id}
+      placeholder={placeholder}
+      value={value}
+      onChange={event => onChangeFunction(event.target.value)}
+    />
+  </>
+);
 
 TextArea.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  onChangeFunction: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 export default TextArea;

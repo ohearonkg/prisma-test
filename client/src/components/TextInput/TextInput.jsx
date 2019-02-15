@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-
 import PropTypes from "prop-types";
+import React from "react";
 import styled from "@emotion/styled";
 
 const StyledInput = styled.input`
@@ -25,29 +24,25 @@ const StyledLabel = styled.label`
   font-family: "Roboto", sans-serif;
 `;
 
-const TextInput = ({ id, label, placeholder }) => {
-  const [value, setValue] = useState("");
-
-  const handleChange = e => {
-    setValue(e.target.value);
-  };
-  return (
-    <>
-      <StyledLabel htmlFor={id}>{label}</StyledLabel>
-      <StyledInput
-        id={id}
-        placeholder={placeholder}
-        value={value}
-        onChange={handleChange}
-      />
-    </>
-  );
-};
+const TextInput = ({ id, label, placeholder, onChangeFunction, value }) => (
+  <>
+    <StyledLabel htmlFor={id}>{label}</StyledLabel>
+    <StyledInput
+      id={id}
+      placeholder={placeholder}
+      value={value}
+      onChange={event => onChangeFunction(event.target.value)}
+      value={value}
+    />
+  </>
+);
 
 TextInput.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
+  onChangeFunction: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 };
 
 export default TextInput;

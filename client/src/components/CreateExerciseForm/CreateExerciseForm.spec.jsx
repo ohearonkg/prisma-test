@@ -9,6 +9,7 @@ const sampleExerciseDescription = "SAMPLE_EXERCISE_DESCRIPTION";
 const sampleOptions = ["BODYWEIGHT", "CARDIO"];
 
 const samplePayload = {
+  exercistType: sampleOptions[0],
   exerciseName: sampleExerciseName,
   exerciseDescription: sampleExerciseDescription
 };
@@ -34,6 +35,14 @@ describe("Create Exercise Form", () => {
   });
 
   /**
+   * Passing option prop values onto Custom Select
+   */
+  it("Should allow the user to select an option from its option props within the rendered <CustomSelect />", () => {
+    const { getByText } = setup();
+    expect(getByText(sampleOptions[0]));
+  });
+
+  /**
    * Calling onSubmit with required passing required fields
    */
   it("Should pass its onSumbit function exercise name and description", () => {
@@ -46,13 +55,5 @@ describe("Create Exercise Form", () => {
     });
     fireEvent.click(getByText("Create"));
     expect(sampleSubmitFunction).toHaveBeenLastCalledWith(samplePayload);
-  });
-
-  /**
-   * Passing option prop values onto Custom Select
-   */
-  it("Should allow the user to select an option from its option props within the rendered <CustomSelect />", () => {
-    const { getByText } = setup();
-    expect(getByText(sampleOptions[0]));
   });
 });

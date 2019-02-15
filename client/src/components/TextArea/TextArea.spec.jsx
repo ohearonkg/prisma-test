@@ -7,6 +7,8 @@ const samplePlaceHolder = "SAMPLE_PLACEHOLDER";
 const sampleInput = "SAMPLE_INPUT";
 const sampleLabel = "SAMPLE_LABEL";
 const sampleId = "SAMPLE_ID";
+const sampleValue = "CD";
+const sampleOnChangeFunction = jest.fn();
 
 const setup = () =>
   render(
@@ -14,6 +16,8 @@ const setup = () =>
       placeholder={samplePlaceHolder}
       id={sampleId}
       label={sampleLabel}
+      onChangeFunction={sampleOnChangeFunction}
+      value={sampleValue}
     />
   );
 
@@ -45,12 +49,19 @@ describe("Text Area", () => {
   });
 
   /**
+   * Calling update function
+   */
+  it("Should call its update function with the value the user has typed", () => {
+    const { getByLabelText } = setup();
+    fireEvent(getByLabelText(sampleLabel), { target: { value: sampleInput } });
+    expect(sampleOnChangeFunction).toHaveBeenCalledWith(sampleInput);
+  });
+
+  /**
    * Updating the displayed value
    */
-  it("Should update its displayed input as the user types", () => {
-    const { getByPlaceholderText, getByText } = setup();
-    const input = getByPlaceholderText(samplePlaceHolder);
-    fireEvent.change(input, { target: { value: sampleInput } });
-    expect(getByText(sampleInput));
+  it("Should display the text passed to it value prop", () => {
+    const { getByText } = setup();
+    expect(getByText(sampleValue));
   });
 });

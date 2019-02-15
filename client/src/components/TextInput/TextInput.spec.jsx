@@ -1,19 +1,24 @@
 import { cleanup, fireEvent, render } from "react-testing-library";
 
-import FormTextInput from "./TextInput";
 import React from "react";
+import TextInput from "./TextInput";
 
 const samplePlaceHolder = "SAMPLE_PLACEHOLDER";
-const sampleInput = "SAMPLE_INPUT";
-const sampleLabel = "SAMPLE_LABEL";
 const sampleId = "SAMPLE_ID";
+const sampleLabel = "SAMPLE_LABEL";
+
+const sampleInput = "SAMPLE_INPUT";
+const sampleOnChangeFunction = jest.fn();
+const sampleValue = "AB";
 
 const setup = () =>
   render(
-    <FormTextInput
+    <TextInput
       placeholder={samplePlaceHolder}
       id={sampleId}
       label={sampleLabel}
+      onChangeFunction={sampleOnChangeFunction}
+      value={sampleValue}
     />
   );
 
@@ -43,14 +48,22 @@ describe("Form Text Input", () => {
     const { getByLabelText } = setup();
     expect(getByLabelText(new RegExp(sampleLabel)));
   });
+  /**
+   * Calling update function
+   */
+  it("Should call its update function with the value the user has typed", () => {
+    const { getByLabelText } = setup();
+    fireEvent.change(getByLabelText(sampleLabel), {
+      target: { value: sampleInput }
+    });
+    expect(sampleOnChangeFunction).toHaveBeenCalledWith(sampleInput);
+  });
 
   /**
    * Updating the displayed value
    */
-  it("Should update its displayed input as the user types", () => {
-    const { getByPlaceholderText, getByValue } = setup();
-    const input = getByPlaceholderText(samplePlaceHolder);
-    fireEvent.change(input, { target: { value: sampleInput } });
-    expect(getByValue(sampleInput));
+  it("Should display the text passed to it value prop", () => {
+    const { getByValue } = setup();
+    expect(getByValue(sampleValue));
   });
 });
