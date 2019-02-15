@@ -1,10 +1,11 @@
 import Button from "../Button/Button";
+import CustomSelect from "../CustomSelect/CustomSelect";
 import PropTypes from "prop-types";
 import React from "react";
 import TextArea from "../TextArea/TextArea";
 import TextInput from "../TextInput/TextInput";
 
-const CreateExerciseForm = ({ onSubmitFunction }) => {
+const CreateExerciseForm = ({ onSubmitFunction, exerciseTypeOptions }) => {
   /**
    * Getting values from the form
    * based on their IDs
@@ -20,6 +21,7 @@ const CreateExerciseForm = ({ onSubmitFunction }) => {
 
   return (
     <form onSubmit={handleSumbit}>
+      <CustomSelect options={exerciseTypeOptions} />
       <TextInput
         placeholder="e.g. Bench Press"
         id="exerciseName"
@@ -36,6 +38,7 @@ const CreateExerciseForm = ({ onSubmitFunction }) => {
 };
 
 CreateExerciseForm.propTypes = {
+  exerciseTypeOptions: PropTypes.arrayOf(PropTypes.string).isRequired,
   onSubmitFunction: PropTypes.func.isRequired
 };
 

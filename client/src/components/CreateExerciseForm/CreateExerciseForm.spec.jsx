@@ -6,6 +6,7 @@ import React from "react";
 const sampleSubmitFunction = jest.fn();
 const sampleExerciseName = "SAMPLE_EXERCISE_NAME";
 const sampleExerciseDescription = "SAMPLE_EXERCISE_DESCRIPTION";
+const sampleOptions = ["BODYWEIGHT", "CARDIO"];
 
 const samplePayload = {
   exerciseName: sampleExerciseName,
@@ -13,7 +14,12 @@ const samplePayload = {
 };
 
 const setup = () =>
-  render(<CreateExerciseForm onSubmitFunction={sampleSubmitFunction} />);
+  render(
+    <CreateExerciseForm
+      onSubmitFunction={sampleSubmitFunction}
+      exerciseTypeOptions={sampleOptions}
+    />
+  );
 
 afterEach(cleanup);
 
@@ -40,5 +46,13 @@ describe("Create Exercise Form", () => {
     });
     fireEvent.click(getByText("Create"));
     expect(sampleSubmitFunction).toHaveBeenLastCalledWith(samplePayload);
+  });
+
+  /**
+   * Passing option prop values onto Custom Select
+   */
+  it("Should allow the user to select an option from its option props within the rendered <CustomSelect />", () => {
+    const { getByText } = setup();
+    expect(getByText(sampleOptions[0]));
   });
 });
