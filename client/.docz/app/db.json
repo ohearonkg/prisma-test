@@ -45,6 +45,23 @@
         }
       ]
     },
+    "src/components/CustomSelect/CustomSelect.mdx": {
+      "name": "Custom Select",
+      "id": "66dabdfb4ef476d6326d8cd008141b36",
+      "filepath": "src/components/CustomSelect/CustomSelect.mdx",
+      "link": null,
+      "slug": "src-components-custom-select-custom-select",
+      "route": "/src-components-custom-select-custom-select",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "custom-select",
+          "value": "Custom Select"
+        }
+      ]
+    },
     "src/components/TextArea/TextArea.mdx": {
       "name": "Text Area",
       "id": "5647bdcde7dc0f19e3dd86d61035ebdf",
@@ -76,23 +93,6 @@
           "depth": 1,
           "slug": "text-input",
           "value": "Text Input"
-        }
-      ]
-    },
-    "src/components/CustomSelect/CustomSelect.mdx": {
-      "name": "Custom Select",
-      "id": "66dabdfb4ef476d6326d8cd008141b36",
-      "filepath": "src/components/CustomSelect/CustomSelect.mdx",
-      "link": null,
-      "slug": "src-components-custom-select-custom-select",
-      "route": "/src-components-custom-select-custom-select",
-      "order": 0,
-      "menu": null,
-      "headings": [
-        {
-          "depth": 1,
-          "slug": "custom-select",
-          "value": "Custom Select"
         }
       ]
     }
