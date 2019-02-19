@@ -7,7 +7,7 @@ type Mutation {
     name: String!
     description: String!
   ): Exercise!
-  createProgram(data: ProgramCreateInput!): Program!
+  createProgram(name: String!, userID: String!): Program!
 }
 
 type Query {

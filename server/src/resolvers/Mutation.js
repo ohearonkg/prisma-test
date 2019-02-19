@@ -2,7 +2,6 @@ const { forwardTo } = require("prisma-binding");
 
 const Mutations = {
   createUser: forwardTo("db"),
-  createProgram: forwardTo("db"),
   async createExercise(parent, args, ctx, info) {
     return ctx.db.mutation.createExercise(
       {
@@ -14,6 +13,18 @@ const Mutations = {
       },
       info
     );
+  },
+  async createProgram(parent, args, ctx, info) {
+    return ctx.db.mutation.createProgram({
+      data: {
+        name: args.name,
+        user: {
+          connect: {
+            id: args.userID
+          }
+        }
+      }
+    });
   }
 };
 
