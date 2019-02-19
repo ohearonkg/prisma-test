@@ -1,30 +1,9 @@
 import { Mutation, Query } from "react-apollo";
 
+import { CREATE_EXERCISE_MUTATION } from "../mutations/CREATE_EXERCISE_MUTATION";
 import CreateExerciseForm from "../components/CreateExerciseForm/CreateExerciseForm";
+import { GET_EXERCISE_TYPES_QUERY } from "../queries/GET_EXERCISE_TYPES_QUERY";
 import React from "react";
-import gql from "graphql-tag";
-
-const GET_EXERCISE_TYPES_QUERY = gql`
-  query GET_EXERCISE_TYPES_QUERY {
-    __type(name: "ExerciseType") {
-      enumValues {
-        name
-      }
-    }
-  }
-`;
-
-const CREATE_EXERCISE_MUTATION = gql`
-  mutation createExercise(
-    $type: ExerciseType!
-    $name: String!
-    $description: String!
-  ) {
-    createExercise(type: $type, name: $name, description: $description) {
-      id
-    }
-  }
-`;
 
 const CreateExercise = () => {
   return (
@@ -43,14 +22,13 @@ const CreateExercise = () => {
             );
             return (
               <CreateExerciseForm
-                onSubmitFunction={exerciseData => {
-                  console.log(exerciseData);
-                  return createExercise({
+                onSubmitFunction={exerciseData =>
+                  createExercise({
                     variables: {
                       ...exerciseData
                     }
-                  });
-                }}
+                  })
+                }
                 exerciseTypeOptions={exerciseTypes}
               />
             );
