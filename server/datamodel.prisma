@@ -20,6 +20,6 @@ type Program {
 type Exercise {
   id: ID! @unique
   name: String!
-  exerciseType: ExerciseType!
+  type: ExerciseType!
   description: String
 }

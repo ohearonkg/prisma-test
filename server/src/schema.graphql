@@ -2,7 +2,11 @@
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
-  createExercise(data: ExerciseCreateInput!): Exercise!
+  createExercise(
+    type: ExerciseType!
+    name: String!
+    description: String!
+  ): Exercise!
   createProgram(data: ProgramCreateInput!): Program!
 }
 

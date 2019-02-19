@@ -8,49 +8,48 @@ import TextInput from "../TextInput/TextInput";
 
 const CreateExerciseForm = ({ onSubmitFunction, exerciseTypeOptions }) => {
   const [exerciseData, setExerciseData] = useState({
-    exerciseType: exerciseTypeOptions[0],
-    exerciseName: "",
-    exerciseDescription: ""
+    type: exerciseTypeOptions[0],
+    name: "",
+    description: ""
   });
   const handleSumbit = event => {
     event.preventDefault();
-    onSubmitFunction({
-      exerciseType,
-      exerciseName,
-      exerciseDescription
-    });
+    onSubmitFunction({ ...exerciseData });
   };
 
-  handleChange = event => {
-    const { name, value } = event.target;
+  const handleChange = (name, value) => {
     switch (name) {
-      case "exerciseName":
-        setExerciseData({ ...exerciseData, exerciseName: value });
-      case "exerciseDescription":
-        setExerciseData({ ...exerciseData, exerciseDescription: value });
+      case "name":
+        setExerciseData({ ...exerciseData, name: value });
+        break;
+      case "description":
+        setExerciseData({ ...exerciseData, description: value });
+        break;
       default:
-        setExerciseData({ ...exerciseData, exerciseType: value });
+        setExerciseData({ ...exerciseData, type: value });
     }
   };
 
   return (
     <form onSubmit={handleSumbit}>
-      <CustomSelect options={exerciseTypeOptions} />
+      <CustomSelect
+        options={exerciseTypeOptions}
+        value={exerciseData.type}
+        onChangeFunction={value => handleChange("type", value)}
+      />
       <TextInput
         placeholder="e.g. Bench Press"
         id="exerciseName"
-        name="exerciseName"
         label="Exercise Name"
-        value={exerciseData.exerciseName}
-        onChangeFunction={event => handleChange(event)}
+        value={exerciseData.name}
+        onChangeFunction={value => handleChange("name", value)}
       />
       <TextArea
         placeholder="Lay on a flat bench.."
         id="exerciseDescription"
-        name="exerciseDescription"
         label="Exercise Description"
-        value={exerciseData.exerciseDescription}
-        onChangeFunction={event => handleChange(event)}
+        value={exerciseData.description}
+        onChangeFunction={value => handleChange("description", value)}
       />
       <Button type="submit"> Create </Button>
     </form>

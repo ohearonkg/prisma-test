@@ -42,13 +42,12 @@ const OptionWrapper = styled.div`
   }
 `;
 
-const CustomSelect = ({ options }) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+const CustomSelect = ({ options, value, onChangeFunction }) => {
   const [open, setOpen] = useState(false);
 
   const handleSelect = (event, option) => {
     event.stopPropagation();
-    setSelectedOption(option);
+    onChangeFunction(option);
     setOpen(false);
   };
 
@@ -59,7 +58,7 @@ const CustomSelect = ({ options }) => {
   return (
     <div aria-label="custom-select" onClick={() => toggleOpen()}>
       <SelectedOptionWrapper open={open}>
-        {selectedOption} <Arrow />
+        {value} <Arrow />
       </SelectedOptionWrapper>
       {open && (
         <OptionsWrapper>
@@ -78,7 +77,9 @@ const CustomSelect = ({ options }) => {
 };
 
 CustomSelect.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string).isRequired
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
+  value: PropTypes.string.isRequired,
+  onChangeFunction: PropTypes.func.isRequired
 };
 
 export default CustomSelect;

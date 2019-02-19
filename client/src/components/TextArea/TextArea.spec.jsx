@@ -53,7 +53,9 @@ describe("Text Area", () => {
    */
   it("Should call its update function with the value the user has typed", () => {
     const { getByLabelText } = setup();
-    fireEvent(getByLabelText(sampleLabel), { target: { value: sampleInput } });
+    fireEvent.change(getByLabelText(sampleLabel), {
+      target: { value: sampleInput }
+    });
     expect(sampleOnChangeFunction).toHaveBeenCalledWith(sampleInput);
   });
 

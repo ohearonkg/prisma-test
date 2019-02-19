@@ -5,7 +5,7 @@
  * JavaScript
  */
 const { Prisma } = require("prisma-binding");
-// require("dotenv").config();
+require("dotenv").config();
 
 const db = new Prisma({
   typeDefs: "src/generated/prisma.graphql",

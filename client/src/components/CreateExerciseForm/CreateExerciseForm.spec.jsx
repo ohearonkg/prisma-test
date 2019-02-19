@@ -9,9 +9,9 @@ const sampleExerciseDescription = "SAMPLE_EXERCISE_DESCRIPTION";
 const sampleOptions = ["BODYWEIGHT", "CARDIO"];
 
 const samplePayload = {
-  exercistType: sampleOptions[0],
-  exerciseName: sampleExerciseName,
-  exerciseDescription: sampleExerciseDescription
+  type: sampleOptions[0],
+  name: sampleExerciseName,
+  description: sampleExerciseDescription
 };
 
 const setup = () =>

@@ -4,7 +4,17 @@ import CustomSelect from "./CustomSelect";
 import React from "react";
 
 const sampleOptions = ["A", "B", "C"];
-const setup = () => render(<CustomSelect options={sampleOptions} />);
+const sampleValue = sampleOptions[0];
+const sampleOnChangeFunction = jest.fn();
+
+const setup = () =>
+  render(
+    <CustomSelect
+      options={sampleOptions}
+      value={sampleValue}
+      onChangeFunction={sampleOnChangeFunction}
+    />
+  );
 
 afterEach(cleanup);
 
@@ -12,9 +22,9 @@ describe("Custom Select", () => {
   /**
    * First value on render
    */
-  it("Should render the first value upon initial render", () => {
+  it("Should render the string passed to its value prop", () => {
     const { getByText } = setup();
-    expect(getByText(sampleOptions[0]));
+    expect(getByText(sampleValue));
   });
 
   /**
@@ -30,22 +40,20 @@ describe("Custom Select", () => {
    * Should close when the user makes a selection
    */
   it("Should close when the user makes a selection", async () => {
-    const { queryAllByText, getByLabelText, getByText, debug } = setup();
+    const { queryAllByText, getByLabelText, getByText } = setup();
     fireEvent.click(getByLabelText("custom-select"));
     fireEvent.click(getByText(sampleOptions[1]));
-    await wait(() => expect(queryAllByText(sampleOptions[0])).toEqual([]));
+    await wait(() => expect(queryAllByText(sampleOptions[2])).toEqual([]));
   });
 
   /**
-   * Should display the selected value
+   * Should call its onChangeFunction passing the user's selection
    */
-  it("Should display the selected value", async () => {
-    const { getByLabelText, getByText, queryAllByText } = setup();
+  it("Should call its onChangeFunction passing the user's selection", () => {
+    const { getByLabelText, getByText } = setup();
     fireEvent.click(getByLabelText("custom-select"));
     fireEvent.click(getByText(sampleOptions[1]));
-    await wait(() => expect(queryAllByText(sampleOptions[0])).toEqual([]));
-    await wait(() => expect(queryAllByText(sampleOptions[2])).toEqual([]));
-    expect(getByText(sampleOptions[1]));
+    expect(sampleOnChangeFunction).toHaveBeenCalledWith(sampleOptions[1]);
   });
 
   /**
