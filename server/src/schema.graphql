@@ -29,4 +29,13 @@ type Query {
     first: Int
     last: Int
   ): [Program]!
+  exercises(
+    where: ExerciseWhereInput
+    orderBy: ExerciseOrderByInput
+    skip: Int
+    after: String
+    before: String
+    first: Int
+    last: Int
+  ): [Exercise]!
 }

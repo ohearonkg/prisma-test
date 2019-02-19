@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const CREATE_EXERCISE_MUTATION = gql`
-  mutation createExercise(
+  mutation CREATE_EXERCISE_MUTATION(
     $type: ExerciseType!
     $name: String!
     $description: String!
