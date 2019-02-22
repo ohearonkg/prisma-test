@@ -24,6 +24,12 @@ const App = () => (
           render={props => <Program {...props} />}
         />
         <Route path="/signup" render={props => <Signup {...props} />} />
+        <Route
+          path="/user/:userId"
+          render={props => (
+            <div> Welcome To the User Page {props.match.params.userId} </div>
+          )}
+        />
       </Switch>
     </Suspense>
   </Router>

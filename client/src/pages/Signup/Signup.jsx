@@ -1,57 +1,69 @@
-import { FormWrapper, PageHeadingWrapper } from "./styles";
+import { PageHeadingWrapper, StyledForm } from "./styles";
 import React, { useState } from "react";
 
 import Button from "../../components/Button/Button";
+import { CREATE_USER_MUTATION } from "../../mutations/CREATE_USER_MUTATION";
+import { Mutation } from "react-apollo";
 import PageHeading from "../../components/PageHeading/PageHeading";
 import PropTypes from "prop-types";
 import TextInput from "../../components/TextInput/TextInput";
 
-const Signup = ({ createUserFunction }) => {
-  const [userName, setUsername] = useState("");
+const Signup = ({ history }) => {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    createUserFunction({
-      userName,
-      password
-    });
-  };
-
   return (
-    <>
-      <PageHeadingWrapper>
-        <PageHeading>Signup</PageHeading>
-      </PageHeadingWrapper>
-      <FormWrapper>
-        <form onSubmit={handleSubmit}>
-          <TextInput
-            id="Username"
-            label="Username"
-            placeholder=""
-            value={userName}
-            onChangeFunction={setUsername}
-          />
+    <Mutation
+      mutation={CREATE_USER_MUTATION}
+      variables={{ username, password }}
+    >
+      {createUserFunction => (
+        <>
+          <PageHeadingWrapper>
+            <PageHeading>Signup</PageHeading>
+          </PageHeadingWrapper>
+          <StyledForm
+            onSubmit={e => {
+              e.preventDefault();
+              createUserFunction({
+                username,
+                password
+              }).then(result => {
+                const {
+                  data: {
+                    createUser: { id }
+                  }
+                } = result;
+                history.push(`/user/${id}`);
+              });
+            }}
+          >
+            <TextInput
+              id="Username"
+              label="Username"
+              placeholder=""
+              value={username}
+              onChangeFunction={setUsername}
+            />
 
-          <TextInput
-            id="Password"
-            label="Password"
-            placeholder=""
-            value={password}
-            onChangeFunction={setPassword}
-          />
+            <TextInput
+              id="Password"
+              label="Password"
+              placeholder=""
+              value={password}
+              onChangeFunction={setPassword}
+            />
 
-          <Button type="submit" onClickFunction={() => {}}>
-            Signup
-          </Button>
-        </form>
-      </FormWrapper>
-    </>
+            <Button type="submit">Signup</Button>
+          </StyledForm>
+        </>
+      )}
+    </Mutation>
   );
 };
 
 Signup.propTypes = {
-  createUserFunction: PropTypes.func.isRequired
+  history: PropTypes.object.isRequired
 };
 
 export default Signup;

@@ -5,7 +5,7 @@ const PageHeadingWrapper = styled.div`
   padding-bottom: 25px;
 `;
 
-const FormWrapper = styled.div`
+const StyledForm = styled.form`
   max-width: 500px;
   margin: 0 auto;
 
@@ -14,4 +14,4 @@ const FormWrapper = styled.div`
   }
 `;
 
-export { PageHeadingWrapper, FormWrapper };
+export { PageHeadingWrapper, StyledForm };
