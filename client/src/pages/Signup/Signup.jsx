@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Button from "../../components/Button/Button";
+import PageHeading from "../../components/PageHeading/PageHeading";
 import PropTypes from "prop-types";
 import TextInput from "../../components/TextInput/TextInput";
 
@@ -18,6 +19,7 @@ const Signup = ({ createUserFunction }) => {
 
   return (
     <>
+      <PageHeading>Signup</PageHeading>
       <form onSubmit={handleSubmit}>
         <TextInput
           id="Username"

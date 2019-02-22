@@ -1,31 +1,9 @@
-import { GET_PROGRAM_QUERY } from "../queries/GET_PROGRAM_QUERY";
+import { ExerciseList, ExerciseName, ExerciseRow, PageHeading } from "./styles";
+
+import { GET_PROGRAM_QUERY } from "../../queries/GET_PROGRAM_QUERY";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import React from "react";
-import styled from "@emotion/styled";
-
-const PageHeading = styled.h1`
-  font-family: "Roboto", sans-serif;
-  font-size: 36px;
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
-`;
-
-const ExerciseList = styled.ol`
-  list-style: none;
-  margin: 0;
-`;
-
-const ExerciseRow = styled.li`
-  display: flex;
-  align-items: stretch;
-`;
-
-const ExerciseName = styled.span`
-  font-family: "Roboto", sans-serif;
-  font-size: 12px;
-`;
 
 const Program = ({
   match: {
@@ -58,4 +36,5 @@ const Program = ({
 Program.propTypes = {
   match: PropTypes.object.isRequired
 };
+
 export default Program;
