@@ -18,7 +18,6 @@ describe("Button", () => {
   it("Should dispaly any children", () => {
     const { getByText } = render(
       <Button>
-        {" "}
         <div>{sampleText}</div>
       </Button>
     );
@@ -32,5 +31,14 @@ describe("Button", () => {
     const { getByText } = setup();
     fireEvent.click(getByText(sampleText));
     expect(sampleOnClickFunction).toHaveBeenCalledTimes(1);
+  });
+
+  /**
+   * Rendering disabled if provided
+   */
+  it("Should be disabled if its disabled prop is set", () => {
+    const { getByText } = render(<Button disabled>{sampleText}</Button>);
+
+    console.log(getByText(sampleText));
   });
 });

@@ -42,15 +42,6 @@ const Signup = ({ history }) => {
                   });
                 }}
               >
-                <div
-                  style={{
-                    maxHeight: usernameUnique ? "0px" : "",
-                    border: usernameUnique ? "0px" : "1px solid red",
-                    overflow: "hidden"
-                  }}
-                >
-                  Username is no unique
-                </div>
                 <TextInput
                   id="Username"
                   label="Username"
@@ -67,10 +58,12 @@ const Signup = ({ history }) => {
                       }
                     });
 
-                    if (users.length > 0) {
-                      setUsernameUnique(false);
-                    }
+                    users.length > 0
+                      ? setUsernameUnique(false)
+                      : setUsernameUnique(true);
                   }}
+                  error={!usernameUnique}
+                  errorText="Username is not unique"
                 />
 
                 <TextInput
@@ -81,7 +74,16 @@ const Signup = ({ history }) => {
                   onChangeFunction={setPassword}
                 />
 
-                <Button type="submit">Signup</Button>
+                <Button
+                  disabled={
+                    !usernameUnique ||
+                    username.length === 0 ||
+                    password.length === 0
+                  }
+                  type="submit"
+                >
+                  Signup
+                </Button>
               </StyledForm>
             </>
           )}

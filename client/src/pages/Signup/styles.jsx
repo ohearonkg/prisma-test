@@ -8,10 +8,6 @@ const PageHeadingWrapper = styled.div`
 const StyledForm = styled.form`
   max-width: 500px;
   margin: 0 auto;
-
-  & input[type="text"] {
-    margin-bottom: 20px;
-  }
 `;
 
 export { PageHeadingWrapper, StyledForm };

@@ -14,5 +14,20 @@ import TextInput from "./TextInput";
 ## Basic Usage
 
 <Playground>
-  <TextInput placeholder="Placholder Here..." id="sampleId" label="Label" />
+  <TextInput
+    placeholder="Placholder Here..."
+    id="sampleId"
+    label="Label"
+    onChangeFunction={() => {}}
+    value=""
+  />
+  <TextInput
+    placeholder="Placholder Here..."
+    id="sampleId"
+    label="Label"
+    onChangeFunction={() => {}}
+    value=""
+    error
+    errorText="Username is not unique"
+  />
 </Playground>

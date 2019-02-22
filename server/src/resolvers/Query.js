@@ -14,7 +14,6 @@ const Query = {
     );
   },
   async users(parent, args, ctx, info) {
-    console.log(args.username);
     return ctx.db.query.users(
       {
         where: {

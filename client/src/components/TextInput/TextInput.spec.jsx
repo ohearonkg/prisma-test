@@ -10,6 +10,7 @@ const sampleLabel = "SAMPLE_LABEL";
 const sampleInput = "SAMPLE_INPUT";
 const sampleOnChangeFunction = jest.fn();
 const sampleValue = "AB";
+const sampleErrorText = "Username is not unique";
 
 const setup = () =>
   render(
@@ -65,5 +66,24 @@ describe("Form Text Input", () => {
   it("Should display the text passed to it value prop", () => {
     const { getByValue } = setup();
     expect(getByValue(sampleValue));
+  });
+
+  /**
+   * Showing error state if provided
+   */
+  it("Should display an error if provided", () => {
+    const { getByText } = render(
+      <TextInput
+        placeholder={samplePlaceHolder}
+        id={sampleId}
+        label={sampleLabel}
+        onChangeFunction={sampleOnChangeFunction}
+        value={sampleValue}
+        error={true}
+        errorText={sampleErrorText}
+      />
+    );
+
+    expect(getByText(sampleErrorText));
   });
 });
