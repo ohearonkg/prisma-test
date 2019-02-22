@@ -1,3 +1,5 @@
+import "jest-dom/extend-expect";
+
 import { cleanup, fireEvent, render } from "react-testing-library";
 
 import Button from "./Button";
@@ -38,7 +40,6 @@ describe("Button", () => {
    */
   it("Should be disabled if its disabled prop is set", () => {
     const { getByText } = render(<Button disabled>{sampleText}</Button>);
-
-    console.log(getByText(sampleText));
+    expect(getByText(sampleText)).toHaveAttribute("disabled");
   });
 });
