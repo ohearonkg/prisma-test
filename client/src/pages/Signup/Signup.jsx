@@ -10,7 +10,10 @@ const Signup = ({ createUserFunction }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    createUserFunction();
+    createUserFunction({
+      userName,
+      password
+    });
   };
 
   return (

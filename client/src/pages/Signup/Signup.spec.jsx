@@ -63,4 +63,22 @@ describe("Signup Page", () => {
     fireEvent.click(getByText("Signup"));
     expect(sampleCreateUserFunction).toHaveBeenCalledTimes(1);
   });
+
+  /**
+   * Calling createUserFunction with correct object
+   */
+  it("Should call the function passwed to its createUserFunction with the correct payload", () => {
+    const { getByLabelText, getByText } = setup();
+    fireEvent.change(getByLabelText("Username"), {
+      target: { value: sampleUsernameInput }
+    });
+    fireEvent.change(getByLabelText("Password"), {
+      target: { value: sampleUserPassword }
+    });
+    fireEvent.click(getByText("Signup"));
+    expect(sampleCreateUserFunction).toHaveBeenCalledWith({
+      userName: sampleUsernameInput,
+      password: sampleUserPassword
+    });
+  });
 });
