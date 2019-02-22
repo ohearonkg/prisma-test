@@ -25,6 +25,16 @@
           "depth": 1,
           "slug": "button",
           "value": "Button"
+        },
+        {
+          "depth": 2,
+          "slug": "properties",
+          "value": "Properties"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic Usage"
         }
       ]
     },
@@ -42,40 +52,16 @@
           "depth": 1,
           "slug": "card",
           "value": "Card"
-        }
-      ]
-    },
-    "src/components/CreateExerciseForm/CreateExerciseForm.mdx": {
-      "name": "Create Exercise Form",
-      "id": "0efe19513d52e0e9d4736469d5011412",
-      "filepath": "src/components/CreateExerciseForm/CreateExerciseForm.mdx",
-      "link": null,
-      "slug": "src-components-create-exercise-form-create-exercise-form",
-      "route": "/src-components-create-exercise-form-create-exercise-form",
-      "order": 0,
-      "menu": null,
-      "headings": [
+        },
         {
-          "depth": 1,
-          "slug": "form-to-create-an-exercise",
-          "value": "Form to create an exercise"
-        }
-      ]
-    },
-    "src/components/TextArea/TextArea.mdx": {
-      "name": "Text Area",
-      "id": "5647bdcde7dc0f19e3dd86d61035ebdf",
-      "filepath": "src/components/TextArea/TextArea.mdx",
-      "link": null,
-      "slug": "src-components-text-area-text-area",
-      "route": "/src-components-text-area-text-area",
-      "order": 0,
-      "menu": null,
-      "headings": [
+          "depth": 2,
+          "slug": "properties",
+          "value": "Properties"
+        },
         {
-          "depth": 1,
-          "slug": "text-input",
-          "value": "Text Input"
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic Usage"
         }
       ]
     },
@@ -93,6 +79,70 @@
           "depth": 1,
           "slug": "custom-select",
           "value": "Custom Select"
+        },
+        {
+          "depth": 2,
+          "slug": "properties",
+          "value": "Properties"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic Usage"
+        }
+      ]
+    },
+    "src/components/PageHeading/PageHeading.mdx": {
+      "name": "Page Heading",
+      "id": "36158d47dade4e6cd4ce24bdf972e0df",
+      "filepath": "src/components/PageHeading/PageHeading.mdx",
+      "link": null,
+      "slug": "src-components-page-heading-page-heading",
+      "route": "/src-components-page-heading-page-heading",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "page-heading",
+          "value": "Page Heading"
+        },
+        {
+          "depth": 2,
+          "slug": "properties",
+          "value": "Properties"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic Usage"
+        }
+      ]
+    },
+    "src/components/TextArea/TextArea.mdx": {
+      "name": "Text Area",
+      "id": "5647bdcde7dc0f19e3dd86d61035ebdf",
+      "filepath": "src/components/TextArea/TextArea.mdx",
+      "link": null,
+      "slug": "src-components-text-area-text-area",
+      "route": "/src-components-text-area-text-area",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "text-area",
+          "value": "Text Area"
+        },
+        {
+          "depth": 2,
+          "slug": "properties",
+          "value": "Properties"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic Usage"
         }
       ]
     },
@@ -110,6 +160,33 @@
           "depth": 1,
           "slug": "text-input",
           "value": "Text Input"
+        },
+        {
+          "depth": 2,
+          "slug": "properties",
+          "value": "Properties"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic Usage"
+        }
+      ]
+    },
+    "src/components/CreateExerciseForm/CreateExerciseForm.mdx": {
+      "name": "Create Exercise Form",
+      "id": "0efe19513d52e0e9d4736469d5011412",
+      "filepath": "src/components/CreateExerciseForm/CreateExerciseForm.mdx",
+      "link": null,
+      "slug": "src-components-create-exercise-form-create-exercise-form",
+      "route": "/src-components-create-exercise-form-create-exercise-form",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "form-to-create-an-exercise",
+          "value": "Form to create an exercise"
         }
       ]
     }

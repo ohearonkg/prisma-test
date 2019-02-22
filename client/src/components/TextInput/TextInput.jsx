@@ -12,6 +12,7 @@ const TextInput = ({ id, label, placeholder, onChangeFunction, value }) => (
       value={value}
       onChange={event => onChangeFunction(event.target.value)}
       value={value}
+      type="text"
     />
   </>
 );

@@ -2,10 +2,17 @@
 name: Text Input
 ---
 
+import { Playground, PropsTable } from "docz";
 import TextInput from "./TextInput";
 
 # Text Input
 
-A simple form primative allowing the user to enter text.
+## Properties
 
-<TextInput placeholder="Placholder.." id="sampleId" label="Label" />
+<PropsTable of={TextInput} />
+
+## Basic Usage
+
+<Playground>
+  <TextInput placeholder="Placholder Here..." id="sampleId" label="Label" />
+</Playground>

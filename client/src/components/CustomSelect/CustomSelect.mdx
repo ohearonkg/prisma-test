@@ -2,10 +2,17 @@
 name: Custom Select
 ---
 
+import { Playground, PropsTable } from "docz";
 import CustomSelect from "./CustomSelect";
 
 # Custom Select
 
-Simple select primative
+## Properties
 
-<CustomSelect options={["CARDIO", "ASSISTED", "BODYWEIGHT"]} />
+<PropsTable of={CustomSelect} />
+
+## Basic Usage
+
+<Playground>
+  <CustomSelect options={["CARDIO", "ASSISTED", "BODYWEIGHT"]} />
+</Playground>

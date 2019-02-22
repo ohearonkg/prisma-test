@@ -1,3 +1,4 @@
+import { FormWrapper, PageHeadingWrapper } from "./styles";
 import React, { useState } from "react";
 
 import Button from "../../components/Button/Button";
@@ -19,28 +20,32 @@ const Signup = ({ createUserFunction }) => {
 
   return (
     <>
-      <PageHeading>Signup</PageHeading>
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          id="Username"
-          label="Username"
-          placeholder=""
-          value={userName}
-          onChangeFunction={setUsername}
-        />
+      <PageHeadingWrapper>
+        <PageHeading>Signup</PageHeading>
+      </PageHeadingWrapper>
+      <FormWrapper>
+        <form onSubmit={handleSubmit}>
+          <TextInput
+            id="Username"
+            label="Username"
+            placeholder=""
+            value={userName}
+            onChangeFunction={setUsername}
+          />
 
-        <TextInput
-          id="Password"
-          label="Password"
-          placeholder=""
-          value={password}
-          onChangeFunction={setPassword}
-        />
+          <TextInput
+            id="Password"
+            label="Password"
+            placeholder=""
+            value={password}
+            onChangeFunction={setPassword}
+          />
 
-        <Button type="submit" onClickFunction={() => {}}>
-          Signup
-        </Button>
-      </form>
+          <Button type="submit" onClickFunction={() => {}}>
+            Signup
+          </Button>
+        </form>
+      </FormWrapper>
     </>
   );
 };

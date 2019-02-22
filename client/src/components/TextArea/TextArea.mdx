@@ -2,10 +2,17 @@
 name: Text Area
 ---
 
+import { Playground, PropsTable } from "docz";
 import TextArea from "./TextArea";
 
-# Text Input
+# Text Area
 
-A simple form primative allowing the user to enter text.
+## Properties
 
-<TextArea placeholder="Placholder.." id="sampleId" label="Label" />
+<PropsTable of={TextArea} />
+
+## Basic Usage
+
+<Playground>
+  <TextArea placeholder="Placholder Here..." id="sampleId" label="Label" />
+</Playground>

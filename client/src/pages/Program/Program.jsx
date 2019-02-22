@@ -1,6 +1,7 @@
-import { ExerciseList, ExerciseName, ExerciseRow, PageHeading } from "./styles";
+import { ExerciseList, ExerciseName, ExerciseRow } from "./styles";
 
 import { GET_PROGRAM_QUERY } from "../../queries/GET_PROGRAM_QUERY";
+import PageHeading from "../../components/PageHeading/PageHeading";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import React from "react";
