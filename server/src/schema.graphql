@@ -30,4 +30,5 @@ type Query {
     last: Int
   ): [Exercise]!
   program(programID: String!): Program!
+  users(username: String!): [User]!
 }

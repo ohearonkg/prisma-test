@@ -12,6 +12,17 @@ const Query = {
       },
       info
     );
+  },
+  async users(parent, args, ctx, info) {
+    console.log(args.username);
+    return ctx.db.query.users(
+      {
+        where: {
+          username: args.username
+        }
+      },
+      info
+    );
   }
 };
 module.exports = Query;
