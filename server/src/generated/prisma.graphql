@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/kg-ohearon/prisma-test/dev
-# timestamp: Thu Feb 21 2019 23:14:10 GMT-0400 (Atlantic Standard Time)
+# timestamp: Thu Feb 21 2019 23:17:32 GMT-0400 (Atlantic Standard Time)
 
 type AggregateExercise {
   count: Int!
@@ -926,6 +926,7 @@ type Subscription {
 type User implements Node {
   id: ID!
   username: String!
+  password: String!
   programs(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Program!]
 }
 
@@ -941,6 +942,7 @@ type UserConnection {
 
 input UserCreateInput {
   username: String!
+  password: String!
   programs: ProgramCreateManyWithoutUserInput
 }
 
@@ -951,6 +953,7 @@ input UserCreateOneWithoutProgramsInput {
 
 input UserCreateWithoutProgramsInput {
   username: String!
+  password: String!
 }
 
 """An edge in a connection."""
@@ -967,6 +970,8 @@ enum UserOrderByInput {
   id_DESC
   username_ASC
   username_DESC
+  password_ASC
+  password_DESC
   updatedAt_ASC
   updatedAt_DESC
   createdAt_ASC
@@ -976,6 +981,7 @@ enum UserOrderByInput {
 type UserPreviousValues {
   id: ID!
   username: String!
+  password: String!
 }
 
 type UserSubscriptionPayload {
@@ -1019,11 +1025,13 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateInput {
   username: String
+  password: String
   programs: ProgramUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
   username: String
+  password: String
 }
 
 input UserUpdateOneRequiredWithoutProgramsInput {
@@ -1035,6 +1043,7 @@ input UserUpdateOneRequiredWithoutProgramsInput {
 
 input UserUpdateWithoutProgramsDataInput {
   username: String
+  password: String
 }
 
 input UserUpsertWithoutProgramsInput {
@@ -1131,6 +1140,46 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   username_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
   programs_every: ProgramWhereInput
   programs_some: ProgramWhereInput
   programs_none: ProgramWhereInput
