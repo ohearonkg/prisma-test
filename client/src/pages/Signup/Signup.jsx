@@ -4,14 +4,15 @@ import Button from "../../components/Button/Button";
 import TextInput from "../../components/TextInput/TextInput";
 
 const Signup = () => {
+  const [userName, setUsername] = useState("");
   return (
     <div>
       <TextInput
-        id="Name"
-        label="Name"
+        id="Username"
+        label="Username"
         placeholder=""
-        value=""
-        onChangeFunction={() => {}}
+        value={userName}
+        onChangeFunction={setUsername}
       />
 
       <TextInput
