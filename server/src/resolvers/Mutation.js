@@ -1,4 +1,3 @@
-const { forwardTo } = require("prisma-binding");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 

@@ -22,6 +22,16 @@ const Query = {
       },
       info
     );
+  },
+  async userProfile(parent, args, ctx, info) {
+    return await ctx.db.query.user(
+      {
+        where: {
+          id: args.id
+        }
+      },
+      info
+    );
   }
 };
 module.exports = Query;

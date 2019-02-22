@@ -31,4 +31,5 @@ type Query {
   ): [Exercise]!
   program(programID: String!): Program!
   users(username: String!): [User]!
+  userProfile(id: ID!): User!
 }
