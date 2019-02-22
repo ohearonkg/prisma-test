@@ -5,12 +5,15 @@ import Signup from "./Signup";
 
 afterEach(cleanup);
 
-const setup = () => render(<Signup />);
-
 /**
  * Variables used for tests
  */
 const sampleUsernameInput = "ABC";
+const sampleUserPassword = "DEF";
+const sampleCreateUserFunction = jest.fn();
+
+const setup = () =>
+  render(<Signup createUserFunction={sampleCreateUserFunction} />);
 
 describe("Signup Page", () => {
   /**
@@ -32,5 +35,32 @@ describe("Signup Page", () => {
       target: { value: sampleUsernameInput }
     });
     expect(getByValue(sampleUsernameInput));
+  });
+
+  /**
+   * Updating form as user enters password
+   */
+  it("Should update the value of its Password field as the user types within it", () => {
+    const { getByLabelText, getByValue } = setup();
+    fireEvent.change(getByLabelText("Password"), {
+      target: { value: sampleUserPassword }
+    });
+    expect(getByValue(sampleUserPassword));
+  });
+
+  /**
+   * Calling createUserFunction when the user clicks
+   * Signup Button
+   */
+  it("Should call the function passwed to its createUserFunction when the user clicks the Signup Button", () => {
+    const { getByLabelText, getByText } = setup();
+    fireEvent.change(getByLabelText("Username"), {
+      target: { value: sampleUsernameInput }
+    });
+    fireEvent.change(getByLabelText("Password"), {
+      target: { value: sampleUserPassword }
+    });
+    fireEvent.click(getByText("Signup"));
+    expect(sampleCreateUserFunction).toHaveBeenCalledTimes(1);
   });
 });
