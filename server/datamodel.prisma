@@ -7,7 +7,7 @@ enum ExerciseType {
 
 type User {
   id: ID! @unique
-  name: String!
+  username: String!
   programs: [Program]!
 }
 
