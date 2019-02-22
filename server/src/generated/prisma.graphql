@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/kg-ohearon/prisma-test/dev
-# timestamp: Tue Feb 19 2019 01:27:53 GMT-0400 (Atlantic Standard Time)
+# timestamp: Tue Feb 19 2019 16:42:16 GMT-0400 (Atlantic Standard Time)
 
 type AggregateExercise {
   count: Int!
@@ -23,6 +23,7 @@ type Exercise implements Node {
   name: String!
   type: ExerciseType!
   description: String
+  Program(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Program!]
 }
 
 """A connection to a list of items."""
@@ -36,6 +37,18 @@ type ExerciseConnection {
 }
 
 input ExerciseCreateInput {
+  name: String!
+  type: ExerciseType!
+  description: String
+  Program: ProgramCreateManyWithoutExercisesInput
+}
+
+input ExerciseCreateManyWithoutProgramInput {
+  create: [ExerciseCreateWithoutProgramInput!]
+  connect: [ExerciseWhereUniqueInput!]
+}
+
+input ExerciseCreateWithoutProgramInput {
   name: String!
   type: ExerciseType!
   description: String
@@ -70,6 +83,147 @@ type ExercisePreviousValues {
   name: String!
   type: ExerciseType!
   description: String
+}
+
+input ExerciseScalarWhereInput {
+  """Logical AND on all given filters."""
+  AND: [ExerciseScalarWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [ExerciseScalarWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [ExerciseScalarWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  type: ExerciseType
+
+  """All values that are not equal to given value."""
+  type_not: ExerciseType
+
+  """All values that are contained in given list."""
+  type_in: [ExerciseType!]
+
+  """All values that are not contained in given list."""
+  type_not_in: [ExerciseType!]
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
 }
 
 type ExerciseSubscriptionPayload {
@@ -122,12 +276,53 @@ input ExerciseUpdateInput {
   name: String
   type: ExerciseType
   description: String
+  Program: ProgramUpdateManyWithoutExercisesInput
+}
+
+input ExerciseUpdateManyDataInput {
+  name: String
+  type: ExerciseType
+  description: String
 }
 
 input ExerciseUpdateManyMutationInput {
   name: String
   type: ExerciseType
   description: String
+}
+
+input ExerciseUpdateManyWithoutProgramInput {
+  create: [ExerciseCreateWithoutProgramInput!]
+  connect: [ExerciseWhereUniqueInput!]
+  set: [ExerciseWhereUniqueInput!]
+  disconnect: [ExerciseWhereUniqueInput!]
+  delete: [ExerciseWhereUniqueInput!]
+  update: [ExerciseUpdateWithWhereUniqueWithoutProgramInput!]
+  updateMany: [ExerciseUpdateManyWithWhereNestedInput!]
+  deleteMany: [ExerciseScalarWhereInput!]
+  upsert: [ExerciseUpsertWithWhereUniqueWithoutProgramInput!]
+}
+
+input ExerciseUpdateManyWithWhereNestedInput {
+  where: ExerciseScalarWhereInput!
+  data: ExerciseUpdateManyDataInput!
+}
+
+input ExerciseUpdateWithoutProgramDataInput {
+  name: String
+  type: ExerciseType
+  description: String
+}
+
+input ExerciseUpdateWithWhereUniqueWithoutProgramInput {
+  where: ExerciseWhereUniqueInput!
+  data: ExerciseUpdateWithoutProgramDataInput!
+}
+
+input ExerciseUpsertWithWhereUniqueWithoutProgramInput {
+  where: ExerciseWhereUniqueInput!
+  update: ExerciseUpdateWithoutProgramDataInput!
+  create: ExerciseCreateWithoutProgramInput!
 }
 
 input ExerciseWhereInput {
@@ -269,6 +464,9 @@ input ExerciseWhereInput {
 
   """All values not ending with the given string."""
   description_not_ends_with: String
+  Program_every: ProgramWhereInput
+  Program_some: ProgramWhereInput
+  Program_none: ProgramWhereInput
 }
 
 input ExerciseWhereUniqueInput {
@@ -333,6 +531,7 @@ type Program implements Node {
   id: ID!
   name: String!
   user: User!
+  exercises(where: ExerciseWhereInput, orderBy: ExerciseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Exercise!]
 }
 
 """A connection to a list of items."""
@@ -348,6 +547,12 @@ type ProgramConnection {
 input ProgramCreateInput {
   name: String!
   user: UserCreateOneWithoutProgramsInput!
+  exercises: ExerciseCreateManyWithoutProgramInput
+}
+
+input ProgramCreateManyWithoutExercisesInput {
+  create: [ProgramCreateWithoutExercisesInput!]
+  connect: [ProgramWhereUniqueInput!]
 }
 
 input ProgramCreateManyWithoutUserInput {
@@ -355,8 +560,14 @@ input ProgramCreateManyWithoutUserInput {
   connect: [ProgramWhereUniqueInput!]
 }
 
+input ProgramCreateWithoutExercisesInput {
+  name: String!
+  user: UserCreateOneWithoutProgramsInput!
+}
+
 input ProgramCreateWithoutUserInput {
   name: String!
+  exercises: ExerciseCreateManyWithoutProgramInput
 }
 
 """An edge in a connection."""
@@ -517,6 +728,7 @@ input ProgramSubscriptionWhereInput {
 input ProgramUpdateInput {
   name: String
   user: UserUpdateOneRequiredWithoutProgramsInput
+  exercises: ExerciseUpdateManyWithoutProgramInput
 }
 
 input ProgramUpdateManyDataInput {
@@ -525,6 +737,18 @@ input ProgramUpdateManyDataInput {
 
 input ProgramUpdateManyMutationInput {
   name: String
+}
+
+input ProgramUpdateManyWithoutExercisesInput {
+  create: [ProgramCreateWithoutExercisesInput!]
+  connect: [ProgramWhereUniqueInput!]
+  set: [ProgramWhereUniqueInput!]
+  disconnect: [ProgramWhereUniqueInput!]
+  delete: [ProgramWhereUniqueInput!]
+  update: [ProgramUpdateWithWhereUniqueWithoutExercisesInput!]
+  updateMany: [ProgramUpdateManyWithWhereNestedInput!]
+  deleteMany: [ProgramScalarWhereInput!]
+  upsert: [ProgramUpsertWithWhereUniqueWithoutExercisesInput!]
 }
 
 input ProgramUpdateManyWithoutUserInput {
@@ -544,13 +768,30 @@ input ProgramUpdateManyWithWhereNestedInput {
   data: ProgramUpdateManyDataInput!
 }
 
+input ProgramUpdateWithoutExercisesDataInput {
+  name: String
+  user: UserUpdateOneRequiredWithoutProgramsInput
+}
+
 input ProgramUpdateWithoutUserDataInput {
   name: String
+  exercises: ExerciseUpdateManyWithoutProgramInput
+}
+
+input ProgramUpdateWithWhereUniqueWithoutExercisesInput {
+  where: ProgramWhereUniqueInput!
+  data: ProgramUpdateWithoutExercisesDataInput!
 }
 
 input ProgramUpdateWithWhereUniqueWithoutUserInput {
   where: ProgramWhereUniqueInput!
   data: ProgramUpdateWithoutUserDataInput!
+}
+
+input ProgramUpsertWithWhereUniqueWithoutExercisesInput {
+  where: ProgramWhereUniqueInput!
+  update: ProgramUpdateWithoutExercisesDataInput!
+  create: ProgramCreateWithoutExercisesInput!
 }
 
 input ProgramUpsertWithWhereUniqueWithoutUserInput {
@@ -649,6 +890,9 @@ input ProgramWhereInput {
   """All values not ending with the given string."""
   name_not_ends_with: String
   user: UserWhereInput
+  exercises_every: ExerciseWhereInput
+  exercises_some: ExerciseWhereInput
+  exercises_none: ExerciseWhereInput
 }
 
 input ProgramWhereUniqueInput {

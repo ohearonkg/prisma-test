@@ -11,15 +11,6 @@ type Mutation {
 }
 
 type Query {
-  users(
-    where: UserWhereInput
-    orderBy: UserOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [User]!
   programs(
     where: ProgramWhereInput
     orderBy: ProgramOrderByInput
@@ -38,4 +29,5 @@ type Query {
     first: Int
     last: Int
   ): [Exercise]!
+  program(programID: String!): Program!
 }
