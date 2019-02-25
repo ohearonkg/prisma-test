@@ -32,4 +32,6 @@ type Query {
   program(programID: String!): Program!
   users(username: String!): [User]!
   userProfile(id: ID!): User!
+  user(where: UserWhereUniqueInput!): User
+  signin(username: String!, password: String!): User
 }

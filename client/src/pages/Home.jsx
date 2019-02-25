@@ -23,6 +23,7 @@ const Home = ({ history }) => {
       Welcome Home
       <Link to="/createExercise"> Add Exercise </Link>
       <Link to="/signup"> Signup </Link>
+      <Link to="/signin"> Sign In</Link>
       {/* Programs */}
       <Query
         query={GET_PROGRAMS_QUERY}

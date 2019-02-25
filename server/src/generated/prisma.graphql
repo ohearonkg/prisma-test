@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/kg-ohearon/prisma-test/dev
-# timestamp: Thu Feb 21 2019 23:17:32 GMT-0400 (Atlantic Standard Time)
+# timestamp: Mon Feb 25 2019 00:12:56 GMT-0400 (Atlantic Standard Time)
 
 type AggregateExercise {
   count: Int!
@@ -1187,4 +1187,5 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  username: String
 }
