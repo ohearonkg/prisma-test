@@ -1,5 +1,6 @@
+import { cleanup, fireEvent, render } from "react-testing-library";
+
 import React from "react";
-import { render, cleanup, fireEvent } from "react-testing-library";
 import Signin from "./SignIn";
 
 afterEach(cleanup);
@@ -16,7 +17,7 @@ describe("Sign In Page", () => {
   /**
    * Rendering username input
    */
-  it("Should render a username input", () => {
+  it.skip("Should render a username input", () => {
     const { getByLabelText } = setup();
     expect(getByLabelText(usernameText));
   });
@@ -25,7 +26,7 @@ describe("Sign In Page", () => {
    * Rendering user's input in username
    * text input
    */
-  it("Should register a the user's keystorkes within the username input", () => {
+  it.skip("Should register a the user's keystorkes within the username input", () => {
     const { getByLabelText, getByValue } = setup();
     fireEvent.change(getByLabelText(usernameText), {
       target: { value: sampleUsernameInput }
@@ -36,7 +37,7 @@ describe("Sign In Page", () => {
   /**
    * Rendering Password input
    */
-  it("Should render a password input", () => {
+  it.skip("Should render a password input", () => {
     const { getByLabelText } = setup();
     expect(getByLabelText(passwordText));
   });
@@ -45,7 +46,7 @@ describe("Sign In Page", () => {
    * Rendering user's input in password
    * text input
    */
-  it("Should register a the user's keystorkes within the password input", () => {
+  it.skip("Should register a the user's keystorkes within the password input", () => {
     const { getByLabelText, getByValue } = setup();
     fireEvent.change(getByLabelText(passwordText), {
       target: { value: samplePasswordInput }
@@ -56,7 +57,7 @@ describe("Sign In Page", () => {
   /**
    * Rendering sign in button
    */
-  it("Should render a signign button", () => {
+  it.skip("Should render a signign button", () => {
     const { getByText } = setup();
     expect(getByText(buttonText));
   });

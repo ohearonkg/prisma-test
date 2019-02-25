@@ -9,47 +9,46 @@ const Signin = () => {
   const [password, setPassword] = useState("");
 
   return (
-    // <ApolloConsumer>
-    //   {client => (
-    //     <form
-    //       onSubmit={async e => {
-    //         e.preventDefault();
-    //         try {
-    //           const data = await client.query({
-    //             query: SIGNIN_USER_QUERY,
-    //             variables: {
-    //               username,
-    //               password
-    //             }
-    //           });
-    //           console.log(data);
-    //         } catch (e) {
-    //           console.log(e);
-    //         }
-    //       }}
-    //     >
-    <>
-      <TextInput
-        id="Username"
-        label="Username"
-        placeholder=""
-        value={username}
-        onChangeFunction={usernameInput => setUsername(usernameInput)}
-      />
+    <ApolloConsumer>
+      {client => (
+        <form
+          onSubmit={async e => {
+            e.preventDefault();
+            try {
+              const data = await client.query({
+                query: SIGNIN_USER_QUERY,
+                variables: {
+                  username,
+                  password
+                }
+              });
+            } catch (e) {
+              console.log(e);
+            }
+          }}
+        >
+          <>
+            <TextInput
+              id="Username"
+              label="Username"
+              placeholder=""
+              value={username}
+              onChangeFunction={usernameInput => setUsername(usernameInput)}
+            />
 
-      <TextInput
-        id="Password"
-        label="Password"
-        placeholder=""
-        value={password}
-        onChangeFunction={passwordInput => setPassword(passwordInput)}
-      />
+            <TextInput
+              id="Password"
+              label="Password"
+              placeholder=""
+              value={password}
+              onChangeFunction={passwordInput => setPassword(passwordInput)}
+            />
 
-      <Button type="submit"> Sign In</Button>
-    </>
-    // </form>//
-    // )}
-    // </ApolloConsumer>
+            <Button type="submit"> Sign In</Button>
+          </>
+        </form>
+      )}
+    </ApolloConsumer>
   );
 };
 

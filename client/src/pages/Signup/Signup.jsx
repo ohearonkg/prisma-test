@@ -12,6 +12,8 @@ import TextInput from "../../components/TextInput/TextInput";
 const Signup = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastname] = useState("");
   const [emailUnique, setEmailUnique] = useState(true);
 
   return (
@@ -41,6 +43,22 @@ const Signup = ({ history }) => {
                   history.push(`/user/${id}`);
                 }}
               >
+                <TextInput
+                  id="First Name"
+                  label="First Name"
+                  placeholder=""
+                  value={firstName}
+                  onChangeFunction={setFirstName}
+                />
+
+                <TextInput
+                  id="Last Name"
+                  label="Last Name"
+                  placeholder=""
+                  value={lastName}
+                  onChangeFunction={setLastname}
+                />
+
                 <TextInput
                   id="Email"
                   label="Email"
