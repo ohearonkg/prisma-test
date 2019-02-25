@@ -1,3 +1,5 @@
+import "jest-dom/extend-expect";
+
 import { cleanup, fireEvent, render } from "react-testing-library";
 
 import Input from "./Input";
@@ -85,5 +87,23 @@ describe("Form Text Input", () => {
     );
 
     expect(getByText(sampleErrorText));
+  });
+
+  /**
+   * Allowing the user to define the type
+   */
+  it("Should be able to create an input of different types", () => {
+    const { getByLabelText } = render(
+      <Input
+        placeholder={samplePlaceHolder}
+        id={sampleId}
+        label={sampleLabel}
+        onChangeFunction={sampleOnChangeFunction}
+        value={sampleValue}
+        type="password"
+      />
+    );
+
+    expect(getByLabelText(sampleLabel)).toHaveAttribute("type", "password");
   });
 });
