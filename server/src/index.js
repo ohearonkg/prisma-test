@@ -4,9 +4,9 @@
  * create our GraphQL server using
  * GraphQL Yoga
  */
-require("dotenv").config();
-const createServer = require("./createServer");
 const cookieParser = require("cookie-parser");
+const createServer = require("./createServer");
+require("dotenv").config();
 
 const server = createServer();
 

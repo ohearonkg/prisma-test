@@ -5,7 +5,11 @@ import App from "./App";
 import React from "react";
 import ReactDOM from "react-dom";
 
-const httpLink = new HttpLink({ uri: "http://localhost:4000" });
+const httpLink = new HttpLink({
+  uri: "http://localhost:4000",
+
+  credentials: "include"
+});
 
 const client = new ApolloClient({
   link: httpLink,

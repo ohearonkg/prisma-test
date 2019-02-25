@@ -1,27 +1,28 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const Mutations = {
-  async createUser(parent, { email, password }, ctx, info) {
+  async signup(parent, { email, password }, ctx, info) {
     // Salt and hash the user's password
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    const user = await ctx.db.mutation.createUser({
-      data: {
-        email,
-        password: hashedPassword
+    const user = await ctx.db.mutation.createUser(
+      {
+        data: {
+          email: email.toLowerCase(),
+          password: hashedPassword
+        }
       },
       info
-    });
+    );
 
     // Generate JWT for user
     const token = jwt.sign({ userID: user.id }, process.env.APP_SECRET);
 
     // Set JWT as Cookie
-    ctx.response.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 1000 * 60 * 60 * 24
-    });
+    ctx.response.cookie("token", token);
+
     return user;
   },
   async createExercise(parent, args, ctx, info) {

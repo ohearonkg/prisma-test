@@ -1,6 +1,9 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
 
+import Signup from "./pages/Signup/Signup";
+import User from "./pages/User/User";
+
 /**
  * Lazily loading our pages thanks to
  * React lazy loading and Suspence
@@ -8,9 +11,11 @@ import React, { Suspense, lazy } from "react";
 const Home = lazy(() => import("./pages/Home"));
 const CreateExercise = lazy(() => import("./pages/CreateExercise"));
 const Program = lazy(() => import("./pages/Program/Program"));
-const Signup = lazy(() => import("./pages/Signup/Signup"));
+// const Signup = lazy(() => import("./pages/Signup/Signup"));
 const SignIn = lazy(() => import("./pages/SignIn/SignIn"));
-const User = lazy(() => import("./pages/User/User"));
+// const User = lazy(() => import("./pages/User/User"));
+
+
 
 const App = () => (
   <HashRouter>

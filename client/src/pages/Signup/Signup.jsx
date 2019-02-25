@@ -3,10 +3,10 @@ import { PageHeadingWrapper, StyledForm } from "./styles";
 import React, { useState } from "react";
 
 import Button from "../../components/Button/Button";
-import { CREATE_USER_MUTATION } from "../../mutations/CREATE_USER_MUTATION";
 import { FIND_USER_QUERY } from "../../queries/FIND_USER_QUERY";
 import PageHeading from "../../components/PageHeading/PageHeading";
 import PropTypes from "prop-types";
+import { SIGNUP_USER_MUTATION } from "../../mutations/SIGNUP_USER_MUTATION";
 import TextInput from "../../components/TextInput/TextInput";
 
 const Signup = ({ history }) => {
@@ -18,7 +18,7 @@ const Signup = ({ history }) => {
     <ApolloConsumer>
       {client => (
         <Mutation
-          mutation={CREATE_USER_MUTATION}
+          mutation={SIGNUP_USER_MUTATION}
           variables={{ email, password }}
         >
           {createUserFunction => (
@@ -27,19 +27,18 @@ const Signup = ({ history }) => {
                 <PageHeading>Signup</PageHeading>
               </PageHeadingWrapper>
               <StyledForm
-                onSubmit={e => {
+                method="post"
+                onSubmit={async e => {
                   e.preventDefault();
-                  createUserFunction({
+                  const {
+                    data: {
+                      signup: { id }
+                    }
+                  } = await createUserFunction({
                     email,
                     password
-                  }).then(result => {
-                    const {
-                      data: {
-                        createUser: { id }
-                      }
-                    } = result;
-                    history.push(`/user/${id}`);
                   });
+                  history.push(`/user/${id}`);
                 }}
               >
                 <TextInput
@@ -54,7 +53,7 @@ const Signup = ({ history }) => {
                     } = await client.query({
                       query: FIND_USER_QUERY,
                       variables: {
-                        email: emailInput
+                        email: emailInput.toLowerCase()
                       }
                     });
 
