@@ -4,10 +4,10 @@ import React, { useState } from "react";
 
 import Button from "../../components/Button/Button";
 import { FIND_USER_QUERY } from "../../queries/FIND_USER_QUERY";
+import Input from "../../components/Input/Input";
 import PageHeading from "../../components/PageHeading/PageHeading";
 import PropTypes from "prop-types";
 import { SIGNUP_USER_MUTATION } from "../../mutations/SIGNUP_USER_MUTATION";
-import TextInput from "../../components/TextInput/TextInput";
 
 const Signup = ({ history }) => {
   const [email, setEmail] = useState("");
@@ -45,7 +45,7 @@ const Signup = ({ history }) => {
                   history.push(`/user/${id}`);
                 }}
               >
-                <TextInput
+                <Input
                   id="First Name"
                   label="First Name"
                   placeholder=""
@@ -53,7 +53,7 @@ const Signup = ({ history }) => {
                   onChangeFunction={setFirstName}
                 />
 
-                <TextInput
+                <Input
                   id="Last Name"
                   label="Last Name"
                   placeholder=""
@@ -61,7 +61,7 @@ const Signup = ({ history }) => {
                   onChangeFunction={setLastname}
                 />
 
-                <TextInput
+                <Input
                   id="Email"
                   label="Email"
                   placeholder=""
@@ -83,12 +83,13 @@ const Signup = ({ history }) => {
                   errorText={`Account with email address ${email} already exists`}
                 />
 
-                <TextInput
+                <Input
                   id="Password"
                   label="Password"
                   placeholder=""
                   value={password}
                   onChangeFunction={setPassword}
+                  type="password"
                 />
 
                 <Button

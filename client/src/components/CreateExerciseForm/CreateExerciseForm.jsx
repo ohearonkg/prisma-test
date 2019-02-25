@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import Button from "../Button/Button";
 import CustomSelect from "../CustomSelect/CustomSelect";
+import Input from "../Input/Input";
 import PropTypes from "prop-types";
 import TextArea from "../TextArea/TextArea";
-import TextInput from "../TextInput/TextInput";
 
 const CreateExerciseForm = ({ onSubmitFunction, exerciseTypeOptions }) => {
   const [exerciseData, setExerciseData] = useState({
@@ -37,7 +37,7 @@ const CreateExerciseForm = ({ onSubmitFunction, exerciseTypeOptions }) => {
         value={exerciseData.type}
         onChangeFunction={value => handleChange("type", value)}
       />
-      <TextInput
+      <Input
         placeholder="e.g. Bench Press"
         id="exerciseName"
         label="Exercise Name"

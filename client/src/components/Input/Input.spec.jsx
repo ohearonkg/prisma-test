@@ -1,7 +1,7 @@
 import { cleanup, fireEvent, render } from "react-testing-library";
 
+import Input from "./Input";
 import React from "react";
-import TextInput from "./TextInput";
 
 const samplePlaceHolder = "SAMPLE_PLACEHOLDER";
 const sampleId = "SAMPLE_ID";
@@ -14,7 +14,7 @@ const sampleErrorText = "Username is not unique";
 
 const setup = () =>
   render(
-    <TextInput
+    <Input
       placeholder={samplePlaceHolder}
       id={sampleId}
       label={sampleLabel}
@@ -73,7 +73,7 @@ describe("Form Text Input", () => {
    */
   it("Should display an error if provided", () => {
     const { getByText } = render(
-      <TextInput
+      <Input
         placeholder={samplePlaceHolder}
         id={sampleId}
         label={sampleLabel}

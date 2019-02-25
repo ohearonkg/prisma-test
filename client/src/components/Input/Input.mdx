@@ -1,27 +1,27 @@
 ---
-name: Text Input
+name: Input
 ---
 
 import { Playground, PropsTable } from "docz";
-import TextInput from "./TextInput";
+import Input from "./Input";
 
-# Text Input
+# Input
 
 ## Properties
 
-<PropsTable of={TextInput} />
+<PropsTable of={Input} />
 
 ## Basic Usage
 
 <Playground>
-  <TextInput
+  <Input
     placeholder="Placholder Here..."
     id="sampleId"
     label="Label"
     onChangeFunction={() => {}}
     value=""
   />
-  <TextInput
+  <Input
     placeholder="Placholder Here..."
     id="sampleId"
     label="Label"
@@ -29,5 +29,13 @@ import TextInput from "./TextInput";
     value=""
     error
     errorText="Username is not unique"
+  />
+  <Input
+    placeholder="Placholder Here..."
+    id="sampleId"
+    label="Label"
+    onChangeFunction={() => {}}
+    value=""
+    type="password"
   />
 </Playground>

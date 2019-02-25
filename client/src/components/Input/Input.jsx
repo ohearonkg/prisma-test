@@ -8,14 +8,15 @@ import {
 import PropTypes from "prop-types";
 import React from "react";
 
-const TextInput = ({
+const Input = ({
   id,
   label,
   placeholder,
   onChangeFunction,
   value,
   error,
-  errorText
+  errorText,
+  type
 }) => (
   <>
     <StyledLabel htmlFor={id}>{label}</StyledLabel>
@@ -26,7 +27,7 @@ const TextInput = ({
       value={value}
       onChange={event => onChangeFunction(event.target.value)}
       value={value}
-      type="text"
+      type={type}
     />
     <ErrorTextWrapper error={error}>
       <ErrorText>{errorText}</ErrorText>
@@ -34,19 +35,21 @@ const TextInput = ({
   </>
 );
 
-TextInput.propTypes = {
+Input.propTypes = {
   label: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   onChangeFunction: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   error: PropTypes.bool,
-  errorText: PropTypes.string
+  errorText: PropTypes.string,
+  type: PropTypes.string
 };
 
-TextInput.defaultProps = {
+Input.defaultProps = {
   error: false,
-  errorText: ""
+  errorText: "",
+  type: "text"
 };
 
-export default TextInput;
+export default Input;

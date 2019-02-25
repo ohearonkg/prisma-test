@@ -33,6 +33,7 @@ const ErrorTextWrapper = styled.div`
 const ErrorText = styled.span`
   font-size: 13px;
   color: #f44336;
+  font-family: "Roboto", sans-serif;
 `;
 
 export { StyledInput, StyledLabel, ErrorTextWrapper, ErrorText };

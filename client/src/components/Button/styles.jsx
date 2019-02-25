@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 const StyledButton = styled.button`
+  display: block;
   transition: all 0.2s ease;
   background: ${props => (props.disabled ? "#bfbfbf" : "#0b5fff")};
   color: white;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { ApolloConsumer } from "react-apollo";
 import Button from "../../components/Button/Button";
-import TextInput from "../../components/TextInput/TextInput";
+import Input from "../../components/Input/Input";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -28,7 +28,7 @@ const Signin = () => {
           }}
         >
           <>
-            <TextInput
+            <Input
               id="Username"
               label="Username"
               placeholder=""
@@ -36,7 +36,7 @@ const Signin = () => {
               onChangeFunction={usernameInput => setUsername(usernameInput)}
             />
 
-            <TextInput
+            <Input
               id="Password"
               label="Password"
               placeholder=""
