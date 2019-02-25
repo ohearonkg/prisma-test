@@ -12,7 +12,11 @@ const User = ({ userId }) => (
         return <h2>Loading</h2>;
       }
       if (!loading && !error && userProfile) {
-        return <div> Welcome Back {userProfile.email} </div>;
+        return (
+          <div>
+            Welcome Back {userProfile.firstname} {userId.lastname}
+          </div>
+        );
       }
     }}
   </Query>

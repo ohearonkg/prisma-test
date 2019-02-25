@@ -4,12 +4,14 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const Mutations = {
-  async signup(parent, { email, password }, ctx, info) {
+  async signup(parent, { firstname, lastname, email, password }, ctx, info) {
     // Salt and hash the user's password
     const hashedPassword = await bcrypt.hash(password, saltRounds);
     const user = await ctx.db.mutation.createUser(
       {
         data: {
+          firstname,
+          lastname,
           email: email.toLowerCase(),
           password: hashedPassword
         }

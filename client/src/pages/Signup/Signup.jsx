@@ -12,8 +12,8 @@ import TextInput from "../../components/TextInput/TextInput";
 const Signup = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastname] = useState("");
+  const [firstname, setFirstName] = useState("");
+  const [lastname, setLastname] = useState("");
   const [emailUnique, setEmailUnique] = useState(true);
 
   return (
@@ -21,7 +21,7 @@ const Signup = ({ history }) => {
       {client => (
         <Mutation
           mutation={SIGNUP_USER_MUTATION}
-          variables={{ email, password }}
+          variables={{ firstname, lastname, email, password }}
         >
           {createUserFunction => (
             <>
@@ -37,6 +37,8 @@ const Signup = ({ history }) => {
                       signup: { id }
                     }
                   } = await createUserFunction({
+                    firstname,
+                    lastname,
                     email,
                     password
                   });
@@ -47,7 +49,7 @@ const Signup = ({ history }) => {
                   id="First Name"
                   label="First Name"
                   placeholder=""
-                  value={firstName}
+                  value={firstname}
                   onChangeFunction={setFirstName}
                 />
 
@@ -55,7 +57,7 @@ const Signup = ({ history }) => {
                   id="Last Name"
                   label="Last Name"
                   placeholder=""
-                  value={lastName}
+                  value={lastname}
                   onChangeFunction={setLastname}
                 />
 

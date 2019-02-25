@@ -1,7 +1,12 @@
 # import * from './generated/prisma.graphql'
 
 type Mutation {
-  signup(email: String!, password: String!): User!
+  signup(
+    firstname: String!
+    lastname: String!
+    email: String!
+    password: String!
+  ): User!
   createExercise(
     type: ExerciseType!
     name: String!

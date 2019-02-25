@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/kg-ohearon/prisma-test/dev
-# timestamp: Mon Feb 25 2019 09:49:19 GMT-0400 (Atlantic Standard Time)
+# timestamp: Mon Feb 25 2019 12:48:16 GMT-0400 (Atlantic Standard Time)
 
 type AggregateExercise {
   count: Int!
@@ -926,6 +926,8 @@ type Subscription {
 type User implements Node {
   id: ID!
   email: String!
+  firstname: String!
+  lastname: String!
   password: String!
   programs(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Program!]
 }
@@ -942,6 +944,8 @@ type UserConnection {
 
 input UserCreateInput {
   email: String!
+  firstname: String!
+  lastname: String!
   password: String!
   programs: ProgramCreateManyWithoutUserInput
 }
@@ -953,6 +957,8 @@ input UserCreateOneWithoutProgramsInput {
 
 input UserCreateWithoutProgramsInput {
   email: String!
+  firstname: String!
+  lastname: String!
   password: String!
 }
 
@@ -970,6 +976,10 @@ enum UserOrderByInput {
   id_DESC
   email_ASC
   email_DESC
+  firstname_ASC
+  firstname_DESC
+  lastname_ASC
+  lastname_DESC
   password_ASC
   password_DESC
   updatedAt_ASC
@@ -981,6 +991,8 @@ enum UserOrderByInput {
 type UserPreviousValues {
   id: ID!
   email: String!
+  firstname: String!
+  lastname: String!
   password: String!
 }
 
@@ -1025,12 +1037,16 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateInput {
   email: String
+  firstname: String
+  lastname: String
   password: String
   programs: ProgramUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
   email: String
+  firstname: String
+  lastname: String
   password: String
 }
 
@@ -1043,6 +1059,8 @@ input UserUpdateOneRequiredWithoutProgramsInput {
 
 input UserUpdateWithoutProgramsDataInput {
   email: String
+  firstname: String
+  lastname: String
   password: String
 }
 
@@ -1140,6 +1158,86 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   email_not_ends_with: String
+  firstname: String
+
+  """All values that are not equal to given value."""
+  firstname_not: String
+
+  """All values that are contained in given list."""
+  firstname_in: [String!]
+
+  """All values that are not contained in given list."""
+  firstname_not_in: [String!]
+
+  """All values less than the given value."""
+  firstname_lt: String
+
+  """All values less than or equal the given value."""
+  firstname_lte: String
+
+  """All values greater than the given value."""
+  firstname_gt: String
+
+  """All values greater than or equal the given value."""
+  firstname_gte: String
+
+  """All values containing the given string."""
+  firstname_contains: String
+
+  """All values not containing the given string."""
+  firstname_not_contains: String
+
+  """All values starting with the given string."""
+  firstname_starts_with: String
+
+  """All values not starting with the given string."""
+  firstname_not_starts_with: String
+
+  """All values ending with the given string."""
+  firstname_ends_with: String
+
+  """All values not ending with the given string."""
+  firstname_not_ends_with: String
+  lastname: String
+
+  """All values that are not equal to given value."""
+  lastname_not: String
+
+  """All values that are contained in given list."""
+  lastname_in: [String!]
+
+  """All values that are not contained in given list."""
+  lastname_not_in: [String!]
+
+  """All values less than the given value."""
+  lastname_lt: String
+
+  """All values less than or equal the given value."""
+  lastname_lte: String
+
+  """All values greater than the given value."""
+  lastname_gt: String
+
+  """All values greater than or equal the given value."""
+  lastname_gte: String
+
+  """All values containing the given string."""
+  lastname_contains: String
+
+  """All values not containing the given string."""
+  lastname_not_contains: String
+
+  """All values starting with the given string."""
+  lastname_starts_with: String
+
+  """All values not starting with the given string."""
+  lastname_not_starts_with: String
+
+  """All values ending with the given string."""
+  lastname_ends_with: String
+
+  """All values not ending with the given string."""
+  lastname_not_ends_with: String
   password: String
 
   """All values that are not equal to given value."""
