@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextInput from "../../components/TextInput/TextInput";
+import Button from "../../components/Button/Button";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
@@ -22,6 +23,8 @@ const Signin = () => {
         value={password}
         onChangeFunction={passwordInput => setPassword(passwordInput)}
       />
+
+      <Button> Sign In</Button>
     </>
   );
 };

@@ -8,6 +8,7 @@ const usernameText = "Username";
 const sampleUsernameInput = "ABC";
 const passwordText = "Password";
 const samplePasswordInput = "DEF";
+const buttonText = "Sign In";
 
 const setup = () => render(<Signin />);
 
@@ -50,5 +51,13 @@ describe("Sign In Page", () => {
       target: { value: samplePasswordInput }
     });
     expect(getByValue(samplePasswordInput));
+  });
+
+  /**
+   * Rendering sign in button
+   */
+  it("Should render a signign button", () => {
+    const { getByText } = setup();
+    expect(getByText(buttonText));
   });
 });
