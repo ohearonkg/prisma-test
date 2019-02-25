@@ -6,10 +6,17 @@
  */
 require("dotenv").config();
 const createServer = require("./createServer");
+const cookieParser = require("cookie-parser");
 
 const server = createServer();
 
-// TODO: use express js for JWT and
+/**
+ * Using cookie parser to set JWT
+ * so that it is sent upon the FIRST
+ * user request to our page
+ */
+server.express.use(cookieParser());
+
 // TODO: use express to populate current user
 
 server.start(

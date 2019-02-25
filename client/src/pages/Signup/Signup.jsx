@@ -10,16 +10,16 @@ import PropTypes from "prop-types";
 import TextInput from "../../components/TextInput/TextInput";
 
 const Signup = ({ history }) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [usernameUnique, setUsernameUnique] = useState(true);
+  const [emailUnique, setEmailUnique] = useState(true);
 
   return (
     <ApolloConsumer>
       {client => (
         <Mutation
           mutation={CREATE_USER_MUTATION}
-          variables={{ username, password }}
+          variables={{ email, password }}
         >
           {createUserFunction => (
             <>
@@ -30,7 +30,7 @@ const Signup = ({ history }) => {
                 onSubmit={e => {
                   e.preventDefault();
                   createUserFunction({
-                    username,
+                    email,
                     password
                   }).then(result => {
                     const {
@@ -43,27 +43,25 @@ const Signup = ({ history }) => {
                 }}
               >
                 <TextInput
-                  id="Username"
-                  label="Username"
+                  id="Email"
+                  label="Email"
                   placeholder=""
-                  value={username}
-                  onChangeFunction={async usernameInput => {
-                    setUsername(usernameInput);
+                  value={email}
+                  onChangeFunction={async emailInput => {
+                    setEmail(emailInput);
                     const {
-                      data: { users }
+                      data: { user }
                     } = await client.query({
                       query: FIND_USER_QUERY,
                       variables: {
-                        username: usernameInput
+                        email: emailInput
                       }
                     });
 
-                    users.length > 0
-                      ? setUsernameUnique(false)
-                      : setUsernameUnique(true);
+                    user ? setEmailUnique(false) : setEmailUnique(true);
                   }}
-                  error={!usernameUnique}
-                  errorText="Username is not unique"
+                  error={!emailUnique}
+                  errorText={`Account with email address ${email} already exists`}
                 />
 
                 <TextInput
@@ -76,9 +74,7 @@ const Signup = ({ history }) => {
 
                 <Button
                   disabled={
-                    !usernameUnique ||
-                    username.length === 0 ||
-                    password.length === 0
+                    !emailUnique || email.length === 0 || password.length === 0
                   }
                   type="submit"
                 >

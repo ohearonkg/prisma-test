@@ -1,7 +1,7 @@
 # import * from './generated/prisma.graphql'
 
 type Mutation {
-  createUser(username: String!, password: String!): User!
+  createUser(email: String!, password: String!): User!
   createExercise(
     type: ExerciseType!
     name: String!
@@ -33,5 +33,4 @@ type Query {
   users(username: String!): [User]!
   userProfile(id: ID!): User!
   user(where: UserWhereUniqueInput!): User
-  signin(username: String!, password: String!): User
 }

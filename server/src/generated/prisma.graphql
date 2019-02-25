@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/kg-ohearon/prisma-test/dev
-# timestamp: Mon Feb 25 2019 00:12:56 GMT-0400 (Atlantic Standard Time)
+# timestamp: Mon Feb 25 2019 09:49:19 GMT-0400 (Atlantic Standard Time)
 
 type AggregateExercise {
   count: Int!
@@ -925,7 +925,7 @@ type Subscription {
 
 type User implements Node {
   id: ID!
-  username: String!
+  email: String!
   password: String!
   programs(where: ProgramWhereInput, orderBy: ProgramOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Program!]
 }
@@ -941,7 +941,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
-  username: String!
+  email: String!
   password: String!
   programs: ProgramCreateManyWithoutUserInput
 }
@@ -952,7 +952,7 @@ input UserCreateOneWithoutProgramsInput {
 }
 
 input UserCreateWithoutProgramsInput {
-  username: String!
+  email: String!
   password: String!
 }
 
@@ -968,8 +968,8 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
-  username_ASC
-  username_DESC
+  email_ASC
+  email_DESC
   password_ASC
   password_DESC
   updatedAt_ASC
@@ -980,7 +980,7 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
-  username: String!
+  email: String!
   password: String!
 }
 
@@ -1024,13 +1024,13 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateInput {
-  username: String
+  email: String
   password: String
   programs: ProgramUpdateManyWithoutUserInput
 }
 
 input UserUpdateManyMutationInput {
-  username: String
+  email: String
   password: String
 }
 
@@ -1042,7 +1042,7 @@ input UserUpdateOneRequiredWithoutProgramsInput {
 }
 
 input UserUpdateWithoutProgramsDataInput {
-  username: String
+  email: String
   password: String
 }
 
@@ -1100,46 +1100,46 @@ input UserWhereInput {
 
   """All values not ending with the given string."""
   id_not_ends_with: ID
-  username: String
+  email: String
 
   """All values that are not equal to given value."""
-  username_not: String
+  email_not: String
 
   """All values that are contained in given list."""
-  username_in: [String!]
+  email_in: [String!]
 
   """All values that are not contained in given list."""
-  username_not_in: [String!]
+  email_not_in: [String!]
 
   """All values less than the given value."""
-  username_lt: String
+  email_lt: String
 
   """All values less than or equal the given value."""
-  username_lte: String
+  email_lte: String
 
   """All values greater than the given value."""
-  username_gt: String
+  email_gt: String
 
   """All values greater than or equal the given value."""
-  username_gte: String
+  email_gte: String
 
   """All values containing the given string."""
-  username_contains: String
+  email_contains: String
 
   """All values not containing the given string."""
-  username_not_contains: String
+  email_not_contains: String
 
   """All values starting with the given string."""
-  username_starts_with: String
+  email_starts_with: String
 
   """All values not starting with the given string."""
-  username_not_starts_with: String
+  email_not_starts_with: String
 
   """All values ending with the given string."""
-  username_ends_with: String
+  email_ends_with: String
 
   """All values not ending with the given string."""
-  username_not_ends_with: String
+  email_not_ends_with: String
   password: String
 
   """All values that are not equal to given value."""
@@ -1187,5 +1187,5 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
-  username: String
+  email: String
 }

@@ -1,17 +1,28 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
+const jwt = require("jsonwebtoken");
 
 const Mutations = {
-  async createUser(parent, args, ctx, info) {
-    const { username, password } = args;
+  async createUser(parent, { email, password }, ctx, info) {
+    // Salt and hash the user's password
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    return ctx.db.mutation.createUser({
+    const user = await ctx.db.mutation.createUser({
       data: {
-        username,
+        email,
         password: hashedPassword
       },
       info
     });
+
+    // Generate JWT for user
+    const token = jwt.sign({ userID: user.id }, process.env.APP_SECRET);
+
+    // Set JWT as Cookie
+    ctx.response.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24
+    });
+    return user;
   },
   async createExercise(parent, args, ctx, info) {
     return ctx.db.mutation.createExercise(
@@ -26,16 +37,19 @@ const Mutations = {
     );
   },
   async createProgram(parent, args, ctx, info) {
-    return ctx.db.mutation.createProgram({
-      data: {
-        name: args.name,
-        user: {
-          connect: {
-            id: args.userID
+    return ctx.db.mutation.createProgram(
+      {
+        data: {
+          name: args.name,
+          user: {
+            connect: {
+              id: args.userID
+            }
           }
         }
-      }
-    });
+      },
+      info
+    );
   }
 };
 
