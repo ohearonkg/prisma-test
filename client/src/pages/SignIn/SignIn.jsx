@@ -3,6 +3,7 @@ import TextInput from "../../components/TextInput/TextInput";
 
 const Signin = () => {
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <>
@@ -18,8 +19,8 @@ const Signin = () => {
         id="Password"
         label="Password"
         placeholder=""
-        value=""
-        onChangeFunction={() => {}}
+        value={password}
+        onChangeFunction={passwordInput => setPassword(passwordInput)}
       />
     </>
   );
