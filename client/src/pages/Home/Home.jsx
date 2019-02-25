@@ -1,17 +1,10 @@
-import Card from "../components/Card/Card";
-import { GET_PROGRAMS_QUERY } from "../queries/GET_PROGRAMS_QUERY";
-import { GET_RECENTLY_CREATED_EXERCISES_QUERY } from "../queries/GET_RECENTLY_CREATED_EXERCISES_QUERY";
-import { Link } from "react-router-dom";
+import Card from "../../components/Card/Card";
+import { GET_PROGRAMS_QUERY } from "../../queries/GET_PROGRAMS_QUERY";
+import { GET_RECENTLY_CREATED_EXERCISES_QUERY } from "../../queries/GET_RECENTLY_CREATED_EXERCISES_QUERY";
+import { ProgramsGrid } from "./styles";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import React from "react";
-import styled from "@emotion/styled";
-
-const ProgramsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 20px;
-`;
 
 const Home = ({ history }) => {
   const handleNavigation = programId => {
@@ -19,11 +12,7 @@ const Home = ({ history }) => {
   };
 
   return (
-    <div>
-      Welcome Home
-      <Link to="/createExercise"> Add Exercise </Link>
-      <Link to="/signup"> Signup </Link>
-      <Link to="/signin"> Sign In</Link>
+    <>
       {/* Programs */}
       <Query
         query={GET_PROGRAMS_QUERY}
@@ -58,7 +47,7 @@ const Home = ({ history }) => {
           </ul>
         )}
       </Query>
-    </div>
+    </>
   );
 };
 
