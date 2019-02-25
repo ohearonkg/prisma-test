@@ -14,7 +14,7 @@ const User = ({ userId }) => (
       if (!loading && !error && userProfile) {
         return (
           <div>
-            Welcome Back {userProfile.firstname} {userId.lastname}
+            Welcome Back {userProfile.firstname} {userProfile.lastname}
           </div>
         );
       }
