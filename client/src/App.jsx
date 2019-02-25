@@ -1,6 +1,10 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
 
+/**
+ * Lazily loading our pages thanks to
+ * React lazy loading and Suspence
+ */
 const Home = lazy(() => import("./pages/Home"));
 const CreateExercise = lazy(() => import("./pages/CreateExercise"));
 const Program = lazy(() => import("./pages/Program/Program"));
