@@ -11,20 +11,20 @@
     "themeConfig": {}
   },
   "entries": {
-    "src/components/CustomSelect/CustomSelect.mdx": {
-      "name": "Custom Select",
-      "id": "66dabdfb4ef476d6326d8cd008141b36",
-      "filepath": "src/components/CustomSelect/CustomSelect.mdx",
+    "src/components/Button/Button.mdx": {
+      "name": "Button",
+      "id": "2b773349a016959194c905ce6ad9d2d4",
+      "filepath": "src/components/Button/Button.mdx",
       "link": null,
-      "slug": "src-components-custom-select-custom-select",
-      "route": "/src-components-custom-select-custom-select",
+      "slug": "src-components-button-button",
+      "route": "/src-components-button-button",
       "order": 0,
       "menu": null,
       "headings": [
         {
           "depth": 1,
-          "slug": "custom-select",
-          "value": "Custom Select"
+          "slug": "button",
+          "value": "Button"
         },
         {
           "depth": 2,
@@ -82,6 +82,60 @@
         }
       ]
     },
+    "src/components/CustomSelect/CustomSelect.mdx": {
+      "name": "Custom Select",
+      "id": "66dabdfb4ef476d6326d8cd008141b36",
+      "filepath": "src/components/CustomSelect/CustomSelect.mdx",
+      "link": null,
+      "slug": "src-components-custom-select-custom-select",
+      "route": "/src-components-custom-select-custom-select",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "custom-select",
+          "value": "Custom Select"
+        },
+        {
+          "depth": 2,
+          "slug": "properties",
+          "value": "Properties"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic Usage"
+        }
+      ]
+    },
+    "src/components/Input/Input.mdx": {
+      "name": "Input",
+      "id": "7780b551cb8b02f18f9ea05620d2e411",
+      "filepath": "src/components/Input/Input.mdx",
+      "link": null,
+      "slug": "src-components-input-input",
+      "route": "/src-components-input-input",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 1,
+          "slug": "input",
+          "value": "Input"
+        },
+        {
+          "depth": 2,
+          "slug": "properties",
+          "value": "Properties"
+        },
+        {
+          "depth": 2,
+          "slug": "basic-usage",
+          "value": "Basic Usage"
+        }
+      ]
+    },
     "src/components/PageHeading/PageHeading.mdx": {
       "name": "Page Heading",
       "id": "36158d47dade4e6cd4ce24bdf972e0df",
@@ -109,20 +163,20 @@
         }
       ]
     },
-    "src/components/TextInput/TextInput.mdx": {
-      "name": "Text Input",
-      "id": "6db715915c5fca63d1112cfa9cde5bae",
-      "filepath": "src/components/TextInput/TextInput.mdx",
+    "src/components/SidebarMenuItem/SidebarMenuItem.mdx": {
+      "name": "Sidebar Menu Item",
+      "id": "6e183c69a1b59525aaeb938f4ba7a325",
+      "filepath": "src/components/SidebarMenuItem/SidebarMenuItem.mdx",
       "link": null,
-      "slug": "src-components-text-input-text-input",
-      "route": "/src-components-text-input-text-input",
+      "slug": "src-components-sidebar-menu-item-sidebar-menu-item",
+      "route": "/src-components-sidebar-menu-item-sidebar-menu-item",
       "order": 0,
       "menu": null,
       "headings": [
         {
           "depth": 1,
-          "slug": "text-input",
-          "value": "Text Input"
+          "slug": "sidebar-menu-item",
+          "value": "Sidebar Menu Item"
         },
         {
           "depth": 2,
@@ -150,33 +204,6 @@
           "depth": 1,
           "slug": "text-area",
           "value": "Text Area"
-        },
-        {
-          "depth": 2,
-          "slug": "properties",
-          "value": "Properties"
-        },
-        {
-          "depth": 2,
-          "slug": "basic-usage",
-          "value": "Basic Usage"
-        }
-      ]
-    },
-    "src/components/Button/Button.mdx": {
-      "name": "Button",
-      "id": "2b773349a016959194c905ce6ad9d2d4",
-      "filepath": "src/components/Button/Button.mdx",
-      "link": null,
-      "slug": "src-components-button-button",
-      "route": "/src-components-button-button",
-      "order": 0,
-      "menu": null,
-      "headings": [
-        {
-          "depth": 1,
-          "slug": "button",
-          "value": "Button"
         },
         {
           "depth": 2,

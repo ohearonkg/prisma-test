@@ -1,10 +1,19 @@
+import { IconWrapper, SidebarMenuItemWrapper, StyledText } from "./styles";
+
 import PropTypes from "prop-types";
 import React from "react";
 
-const SidebarMenuItem = ({ text }) => <div>{text}</div>;
+const SidebarMenuItem = ({ text, icon, onClickFunction }) => (
+  <SidebarMenuItemWrapper onClick={onClickFunction}>
+    <IconWrapper>{icon}</IconWrapper>
+    <StyledText>{text}</StyledText>
+  </SidebarMenuItemWrapper>
+);
 
 SidebarMenuItem.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  onClickFunction: PropTypes.func.isRequired
 };
 
 export default SidebarMenuItem;
