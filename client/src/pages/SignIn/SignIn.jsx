@@ -1,39 +1,41 @@
 import React, { useState } from "react";
 
-import { ApolloConsumer } from "react-apollo";
 import Button from "../../components/Button/Button";
 import Input from "../../components/Input/Input";
+import { Mutation } from "react-apollo";
+import PropTypes from "prop-types";
+import { SIGNIN_USER_MUTATION } from "../../mutations/SIGNIN_USER_MUTATION";
 
-const Signin = () => {
-  const [username, setUsername] = useState("");
+const Signin = ({ history }) => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <ApolloConsumer>
-      {client => (
+    <Mutation mutation={SIGNIN_USER_MUTATION}>
+      {(signinUser, { data }) => (
         <form
           onSubmit={async e => {
             e.preventDefault();
-            try {
-              const data = await client.query({
-                query: SIGNIN_USER_QUERY,
-                variables: {
-                  username,
-                  password
-                }
-              });
-            } catch (e) {
-              console.log(e);
-            }
+            const {
+              data: {
+                signin: { id }
+              }
+            } = await signinUser({
+              variables: {
+                email,
+                password
+              }
+            });
+            history.push(`/user/${id}`);
           }}
         >
           <>
             <Input
-              id="Username"
-              label="Username"
+              id="Email"
+              label="Email"
               placeholder=""
-              value={username}
-              onChangeFunction={usernameInput => setUsername(usernameInput)}
+              value={email}
+              onChangeFunction={emailInput => setEmail(emailInput)}
             />
 
             <Input
@@ -41,6 +43,7 @@ const Signin = () => {
               label="Password"
               placeholder=""
               value={password}
+              type="password"
               onChangeFunction={passwordInput => setPassword(passwordInput)}
             />
 
@@ -48,8 +51,12 @@ const Signin = () => {
           </>
         </form>
       )}
-    </ApolloConsumer>
+    </Mutation>
   );
+};
+
+Signin.propTypes = {
+  history: PropTypes.object.isRequired
 };
 
 export default Signin;
