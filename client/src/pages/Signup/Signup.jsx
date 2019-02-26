@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import Button from "../../components/Button/Button";
 import { FIND_USER_QUERY } from "../../queries/FIND_USER_QUERY";
+import { GET_CURRENTLY_LOGGED_IN_USER_QUERY } from "../../queries/GET_CURRENTLY_LOGGED_IN_USER_QUERY";
 import Input from "../../components/Input/Input";
 import PageHeading from "../../components/PageHeading/PageHeading";
 import PropTypes from "prop-types";
@@ -22,6 +23,7 @@ const Signup = ({ history }) => {
         <Mutation
           mutation={SIGNUP_USER_MUTATION}
           variables={{ firstname, lastname, email, password }}
+          refetchQueries={[{ query: GET_CURRENTLY_LOGGED_IN_USER_QUERY }]}
         >
           {createUserFunction => (
             <>
