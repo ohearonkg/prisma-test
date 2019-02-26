@@ -3,12 +3,15 @@ import {
   NavigationLinkWrapper,
   StyledNavigationLink
 } from "./styles";
+import { Mutation, Query } from "react-apollo";
 
 import { GET_CURRENTLY_LOGGED_IN_USER_QUERY } from "../../queries/GET_CURRENTLY_LOGGED_IN_USER_QUERY";
-import { Query } from "react-apollo";
+import PropTypes from "prop-types";
 import React from "react";
+import { SIGNOUT_USER_MUTATION } from "../../mutations/SIGNOUT_USER_MUTATION";
+import { withRouter } from "react-router-dom";
 
-const Navigation = () => (
+const Navigation = ({ history }) => (
   <Query query={GET_CURRENTLY_LOGGED_IN_USER_QUERY}>
     {({ loading, error, data: { currentlyLoggedInUser } }) => {
       if (!loading && !error) {
@@ -18,7 +21,7 @@ const Navigation = () => (
               <>
                 <NavigationLinkWrapper>
                   <StyledNavigationLink to="/signup">
-                    Sign Up{" "}
+                    Sign Up
                   </StyledNavigationLink>
                 </NavigationLinkWrapper>
 
@@ -31,11 +34,24 @@ const Navigation = () => (
             )}
 
             {currentlyLoggedInUser && (
-              <NavigationLinkWrapper>
-                <StyledNavigationLink to="/signout">
-                  Sign Out
-                </StyledNavigationLink>
-              </NavigationLinkWrapper>
+              <Mutation
+                mutation={SIGNOUT_USER_MUTATION}
+                refetchQueries={[{ query: GET_CURRENTLY_LOGGED_IN_USER_QUERY }]}
+              >
+                {signout => (
+                  <NavigationLinkWrapper>
+                    <StyledNavigationLink
+                      to="#"
+                      onClick={async () => {
+                        await signout();
+                        history.push("/");
+                      }}
+                    >
+                      Sign Out
+                    </StyledNavigationLink>
+                  </NavigationLinkWrapper>
+                )}
+              </Mutation>
             )}
           </HeaderWrapper>
         );
@@ -45,4 +61,8 @@ const Navigation = () => (
   </Query>
 );
 
-export default Navigation;
+Navigation.propTypes = {
+  history: PropTypes.object.isRequired
+};
+
+export default withRouter(Navigation);

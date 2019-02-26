@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import Button from "../../components/Button/Button";
+import { GET_CURRENTLY_LOGGED_IN_USER_QUERY } from "../../queries/GET_CURRENTLY_LOGGED_IN_USER_QUERY";
 import Input from "../../components/Input/Input";
 import { Mutation } from "react-apollo";
 import PropTypes from "prop-types";
@@ -11,7 +12,10 @@ const Signin = ({ history }) => {
   const [password, setPassword] = useState("");
 
   return (
-    <Mutation mutation={SIGNIN_USER_MUTATION}>
+    <Mutation
+      mutation={SIGNIN_USER_MUTATION}
+      refetchQueries={[{ query: GET_CURRENTLY_LOGGED_IN_USER_QUERY }]}
+    >
       {(signinUser, { data }) => (
         <form
           onSubmit={async e => {

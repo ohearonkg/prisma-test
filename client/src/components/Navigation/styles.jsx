@@ -8,6 +8,7 @@ const HeaderWrapper = styled.nav`
   justify-content: flex-end;
   align-items: center;
   background: #262b47;
+  min-height: 59px;
 `;
 
 const NavigationLinkWrapper = styled.div`

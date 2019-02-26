@@ -99,6 +99,10 @@ const Mutations = {
       },
       info
     );
+  },
+  async signout(parent, args, ctx, info) {
+    ctx.response.clearCookie("token");
+    return { message: "Succesfully Signed Out" };
   }
 };
 

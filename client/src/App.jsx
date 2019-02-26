@@ -16,26 +16,28 @@ const User = lazy(() => import("./pages/User/User"));
 
 const App = () => (
   <HashRouter>
-    <Suspense fallback={<div />}>
+    <>
       <Navigation />
-      <Switch>
-        <Route path="/" exact render={props => <Home {...props} />} />
-        <Route
-          path="/createExercise"
-          render={props => <CreateExercise {...props} />}
-        />
-        <Route
-          path="/program/:programID"
-          render={props => <Program {...props} />}
-        />
-        <Route path="/signup" render={props => <Signup {...props} />} />
-        <Route path="/signin" render={props => <SignIn {...props} />} />
-        <Route
-          path="/user/:userId"
-          render={props => <User userId={props.match.params.userId} />}
-        />
-      </Switch>
-    </Suspense>
+      <Suspense fallback={<div />}>
+        <Switch>
+          <Route path="/" exact render={props => <Home {...props} />} />
+          <Route
+            path="/createExercise"
+            render={props => <CreateExercise {...props} />}
+          />
+          <Route
+            path="/program/:programID"
+            render={props => <Program {...props} />}
+          />
+          <Route path="/signup" render={props => <Signup {...props} />} />
+          <Route path="/signin" render={props => <SignIn {...props} />} />
+          <Route
+            path="/user/:userId"
+            render={props => <User userId={props.match.params.userId} />}
+          />
+        </Switch>
+      </Suspense>
+    </>
   </HashRouter>
 );
 
