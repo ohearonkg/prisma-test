@@ -15,7 +15,9 @@ import Home from "@material-ui/icons/Home";
 ## Basic Usage
 
 <Playground>
-  <SidebarMenuItem text="Home" altText="Home Icon">
-    <Home />
-  </SidebarMenuItem>
+  <SidebarMenuItem
+    icon={<Home />}
+    text="Home"
+    onClickFunction={() => alert("Clicked")}
+  />
 </Playground>

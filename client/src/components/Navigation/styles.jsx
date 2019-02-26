@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import theme from "../../theme";
 
 const HeaderWrapper = styled.nav`
   display: flex;
@@ -7,7 +8,7 @@ const HeaderWrapper = styled.nav`
   box-sizing: border-box;
   justify-content: flex-end;
   align-items: center;
-  background: #262b47;
+  background: ${theme.color.darkBlue};
   min-height: 59px;
 `;
 
@@ -18,11 +19,11 @@ const NavigationLinkWrapper = styled.div`
 const StyledNavigationLink = styled(Link)`
   text-decoration: none;
   color: white;
-  font-family: "Roboto", sans-serif;
+  font-family: ${theme.font.Roboto};
   transition: all 0.1s ease-in-out;
 
   &:hover {
-    color: #e8d214;
+    color: ${theme.color.yellow};
   }
 `;
 

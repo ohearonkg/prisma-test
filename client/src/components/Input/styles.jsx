@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import theme from "../../theme";
 
 const StyledInput = styled.input`
   display: block;
@@ -6,21 +7,26 @@ const StyledInput = styled.input`
   box-sizing: border-box;
   border-radius: 4px;
   padding: ${props => (props.error ? "9px 19px" : "10px 20px")};
-  border: ${props => (props.error ? "2px solid #f44336" : "1px solid #c4c4c4")};
-  font-family: "Roboto", sans-serif;
+  border: ${props =>
+    props.error
+      ? `2px solid ${theme.color.red} `
+      : `1px solid ${theme.color.lightGrey} `};
+  font-family: ${theme.font.Roboto};
   font-size: 14px;
 
   &:focus {
     outline: none;
     border: ${props =>
-      props.error ? "2px solid #f44336" : "2px solid #0b5fff"};
+      props.error
+        ? `2px solid ${theme.color.red} `
+        : `2px solid ${theme.color.blue}`};
     padding: 9px 19px;
   }
 `;
 
 const StyledLabel = styled.label`
   display: block;
-  font-family: "Roboto", sans-serif;
+  font-family: ${theme.font.Roboto};
   font-size: 18px;
 `;
 
@@ -33,7 +39,7 @@ const ErrorTextWrapper = styled.div`
 const ErrorText = styled.span`
   font-size: 13px;
   color: #f44336;
-  font-family: "Roboto", sans-serif;
+  font-family: ${theme.font.Roboto};
 `;
 
 export { StyledInput, StyledLabel, ErrorTextWrapper, ErrorText };

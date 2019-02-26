@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import theme from "../../theme";
 
 const SidebarMenuItemWrapper = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ const SidebarMenuItemWrapper = styled.div`
   transition: all 0.1s ease-in-out;
 
   &:hover {
-    color: red;
+    color: ${theme.color.yellow};
   }
 `;
 
@@ -20,7 +21,7 @@ const IconWrapper = styled.div`
 `;
 
 const StyledText = styled.span`
-  font-family: "Roboto", sans-serif;
+  font-family: ${theme.font.Roboto};
   font-weight: 500;
 `;
 
