@@ -1,4 +1,5 @@
 import { SidebarMenuItemWrapper } from "../../components/SidebarMenuItem/styles";
+import { StyledCard } from "../../components/Card/styles";
 import styled from "@emotion/styled";
 
 const PageWrapper = styled.div`
@@ -11,8 +12,7 @@ const PageWrapper = styled.div`
 const SidebarWrapper = styled.div`
   flex: 0 0 auto;
   background-color: white;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  box-shadow: -3px 3px 20px 0px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   padding-left: 20px;
   padding-right: 100px;
@@ -30,4 +30,57 @@ const ContentWraper = styled.div`
   flex: 1 1 auto;
 `;
 
-export { PageWrapper, SidebarWrapper, ContentWraper };
+const CardsWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const BigCardWrapper = styled.div`
+  flex: 1 1 calc(calc(100% - 10px) / 2);
+
+  & ${StyledCard} {
+    width: 100%;
+  }
+
+  &:nth-child(odd) {
+    padding-right: 10px;
+  }
+`;
+
+const SmallCardWrapper = styled.div`
+  padding-top: 20px;
+  flex: 1 1 calc(calc(100% - 20px) / 3);
+
+  & ${StyledCard} {
+    width: 100%;
+  }
+
+  &:nth-child(even) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+`;
+
+const AvatarImageWrapper = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+`;
+
+const AvatarImage = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+`;
+
+export {
+  PageWrapper,
+  SidebarWrapper,
+  ContentWraper,
+  CardsWrapper,
+  BigCardWrapper,
+  SmallCardWrapper,
+  AvatarImageWrapper,
+  AvatarImage
+};

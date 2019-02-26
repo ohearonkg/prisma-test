@@ -1,7 +1,16 @@
-import { ContentWraper, PageWrapper, SidebarWrapper } from "./styles";
+import {
+  AvatarImage,
+  AvatarImageWrapper,
+  BigCardWrapper,
+  CardsWrapper,
+  ContentWraper,
+  PageWrapper,
+  SidebarWrapper,
+  SmallCardWrapper
+} from "./styles";
 
 import CalendarToday from "@material-ui/icons/CalendarToday";
-import { GET_PROGRAMS_QUERY } from "../../queries/GET_PROGRAMS_QUERY";
+import Card from "../../components/Card/Card";
 import { GET_USER_PROFILE_QUERY } from "../../queries/GET_USER_PROFILE_QUERY";
 import Home from "@material-ui/icons/Home";
 import { Query } from "react-apollo";
@@ -11,64 +20,60 @@ import Timeline from "@material-ui/icons/Timeline";
 
 const User = ({ userId }) => (
   <PageWrapper>
-    <SidebarWrapper>
-      <SidebarMenuItem
-        icon={<Home />}
-        text="Home"
-        onClickFunction={() => alert("Clicked")}
-      />
-      <SidebarMenuItem
-        icon={<CalendarToday />}
-        text="Schedule"
-        onClickFunction={() => alert("Clicked")}
-      />
-      <SidebarMenuItem
-        icon={<Timeline />}
-        text="Statistics"
-        onClickFunction={() => alert("Clicked")}
-      />
-    </SidebarWrapper>
+    <Query query={GET_USER_PROFILE_QUERY} variables={{ id: userId }}>
+      {({ loading, error, data: { userProfile } }) =>
+        !loading && !error && userProfile ? (
+          <SidebarWrapper>
+            <h2>
+              {userProfile.firstname} {userProfile.lastname}
+              <AvatarImageWrapper>
+                <AvatarImage
+                  src="http://lorempixel.com/400/200/people/1/"
+                  alt={`${userProfile.firstname}-${userProfile.lastname}-image`}
+                />
+              </AvatarImageWrapper>
+            </h2>
+            <SidebarMenuItem
+              icon={<Home />}
+              text="Home"
+              onClickFunction={() => alert("Clicked")}
+            />
+            <SidebarMenuItem
+              icon={<CalendarToday />}
+              text="Schedule"
+              onClickFunction={() => alert("Clicked")}
+            />
+            <SidebarMenuItem
+              icon={<Timeline />}
+              text="Statistics"
+              onClickFunction={() => alert("Clicked")}
+            />
+          </SidebarWrapper>
+        ) : null
+      }
+    </Query>
 
     <ContentWraper>
-      <Query query={GET_USER_PROFILE_QUERY} variables={{ id: userId }}>
-        {({ loading, error, data: { userProfile } }) => {
-          if (error) {
-            return <h2>Error</h2>;
-          }
-          if (loading) {
-            return <h2>Loading</h2>;
-          }
-          if (!loading && !error && userProfile) {
-            return (
-              <div>
-                Welcome Back {userProfile.firstname} {userProfile.lastname}
-              </div>
-            );
-          }
-        }}
-      </Query>
+      <CardsWrapper>
+        {/* Two Big Cards */}
+        <BigCardWrapper>
+          <Card>Big Card</Card>
+        </BigCardWrapper>
+        <BigCardWrapper>
+          <Card>Big Card</Card>
+        </BigCardWrapper>
 
-      {/* User's Programs */}
-      <Query query={GET_PROGRAMS_QUERY} variables={{ userID: userId }}>
-        {({ loading, error, data: { programs } }) => {
-          if (error) {
-            return <h2>Error</h2>;
-          }
-          if (loading) {
-            return <h2>Loading</h2>;
-          }
-          return (
-            <>
-              <h2>Your Programs</h2>
-              {programs.length > 0 &&
-                programs.map(program => <span> Program</span>)}
-              {programs.length === 0 && (
-                <div>You have no programs. Add One</div>
-              )}
-            </>
-          );
-        }}
-      </Query>
+        {/* Three Small Cards */}
+        <SmallCardWrapper>
+          <Card>Small Card</Card>
+        </SmallCardWrapper>
+        <SmallCardWrapper>
+          <Card>Small Card</Card>
+        </SmallCardWrapper>
+        <SmallCardWrapper>
+          <Card>Small Card</Card>
+        </SmallCardWrapper>
+      </CardsWrapper>
     </ContentWraper>
   </PageWrapper>
 );
