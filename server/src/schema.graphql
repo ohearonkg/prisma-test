@@ -39,4 +39,5 @@ type Query {
   users(username: String!): [User]!
   userProfile(id: ID!): User!
   user(where: UserWhereUniqueInput!): User
+  currentlyLoggedInUser: User
 }

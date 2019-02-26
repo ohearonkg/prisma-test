@@ -1,7 +1,7 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
 
-import Header from "./components/Header/Header";
+import Navigation from "./components/Navigation/Navigation";
 
 /**
  * Lazily loading our pages thanks to
@@ -17,7 +17,7 @@ const User = lazy(() => import("./pages/User/User"));
 const App = () => (
   <HashRouter>
     <Suspense fallback={<div />}>
-      <Header />
+      <Navigation />
       <Switch>
         <Route path="/" exact render={props => <Home {...props} />} />
         <Route

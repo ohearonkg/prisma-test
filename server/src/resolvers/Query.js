@@ -1,4 +1,5 @@
 const { forwardTo } = require("prisma-binding");
+const jwt = require("jsonwebtoken");
 
 const Query = {
   programs: forwardTo("db"),
@@ -29,6 +30,27 @@ const Query = {
       {
         where: {
           id: args.id
+        }
+      },
+      info
+    );
+  },
+  async currentlyLoggedInUser(parent, args, ctx, info) {
+    /**
+     * Determine if there is a cookie present
+     * containing the user ID
+     */
+    const { token } = ctx.request.cookies;
+
+    if (!token) {
+      return null;
+    }
+
+    const { userID } = jwt.verify(token, process.env.APP_SECRET);
+    return ctx.db.query.user(
+      {
+        where: {
+          id: userID
         }
       },
       info

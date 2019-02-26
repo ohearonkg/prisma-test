@@ -1,6 +1,6 @@
 import { cleanup, render } from "react-testing-library";
 
-import Header from "./Header";
+import Navigation from "./Navigation";
 import React from "react";
 
 afterEach(cleanup);
@@ -9,6 +9,9 @@ const setup = () => render(<Header />);
 
 describe("Header Component", () => {
   /**
-   * Rendering links
+   * Rendering sign in / sign up
+   */
+  /**
+   * rendering sign out
    */
 });
