@@ -1,6 +1,7 @@
 import { SidebarMenuItemWrapper } from "../../components/SidebarMenuItem/styles";
 import { StyledCard } from "../../components/Card/styles";
 import styled from "@emotion/styled";
+import theme from "../../theme";
 
 const PageWrapper = styled.div`
   display: flex;
@@ -74,6 +75,19 @@ const AvatarImage = styled.img`
   height: 100%;
 `;
 
+const StatsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StatHeading = styled.span`
+  text-transform: uppercase;
+  font-family: ${theme.font.Roboto};
+  font-weight: 500;
+  display: block;
+`;
+
 export {
   PageWrapper,
   SidebarWrapper,
@@ -82,5 +96,7 @@ export {
   BigCardWrapper,
   SmallCardWrapper,
   AvatarImageWrapper,
-  AvatarImage
+  AvatarImage,
+  StatsWrapper,
+  StatHeading
 };

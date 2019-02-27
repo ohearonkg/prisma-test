@@ -1,6 +1,6 @@
 import "jest-dom/extend-expect";
 
-import { cleanup, fireEvent, getByRole, render } from "react-testing-library";
+import { cleanup, fireEvent, render } from "react-testing-library";
 
 import React from "react";
 import SidebarMenuItem from "./SidebarMenuItem";
