@@ -16,7 +16,4 @@ SidebarMenuItem.propTypes = {
   onClickFunction: PropTypes.func.isRequired
 };
 
-const SidebarMenuItemPropTypes = SidebarMenuItem.propTypes;
-export { SidebarMenuItemPropTypes };
-
 export default SidebarMenuItem;

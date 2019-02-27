@@ -1,0 +1,39 @@
+---
+name: Sidebar Menu
+---
+
+import SidebarMenu from "./SidebarMenu";
+import { Playground, PropsTable } from "docz";
+import Home from "@material-ui/icons/Home";
+import Timeline from "@material-ui/icons/Timeline";
+import CalendarToday from "@material-ui/icons/CalendarToday";
+
+# Sidebar Menu
+
+## Properties
+
+<PropsTable of={SidebarMenu} />
+
+## Basic Usage
+
+<Playground>
+  <SidebarMenu
+    menuItems={[
+      {
+        icon: <Home />,
+        text: "Home",
+        onClickFunction: () => alert("Clicked")
+      },
+      {
+        icon: <CalendarToday />,
+        text: "Schedule",
+        onClickFunction: () => alert("Clicked")
+      },
+      {
+        icon: <Timeline />,
+        text: "Timeline",
+        onClickFunction: () => alert("Clicked")
+      }
+    ]}
+  />
+</Playground>
