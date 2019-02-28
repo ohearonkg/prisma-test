@@ -7,6 +7,7 @@ import { Query } from "react-apollo";
 import React from "react";
 import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
 import Timeline from "@material-ui/icons/Timeline";
+import Schedule from "../Schedule/Schedule";
 
 const User = ({ userId, history, location }) => {
   const locationArray = location.pathname.split("/");
@@ -45,7 +46,7 @@ const User = ({ userId, history, location }) => {
 
         {locationArray.length === 4 ? (
           locationArray[3] === "schedule" ? (
-            <h1> Schedule </h1>
+            <Schedule />
           ) : (
             <h1> Timeline </h1>
           )
