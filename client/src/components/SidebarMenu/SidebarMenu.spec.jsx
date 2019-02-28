@@ -16,17 +16,12 @@ const SampleIcon = () => (
 const sampleMenuItems = [
   {
     text: sampleText,
-    icon: <SampleIcon />
+    icon: <SampleIcon />,
+    onClickFunction: sampleOnClickFunction
   }
 ];
 
-const setup = () =>
-  render(
-    <SidebarMenu
-      menuItems={sampleMenuItems}
-      onClickFunction={sampleOnClickFunction}
-    />
-  );
+const setup = () => render(<SidebarMenu menuItems={sampleMenuItems} />);
 
 describe("Sidebar Menu Component", () => {
   /**
@@ -36,14 +31,5 @@ describe("Sidebar Menu Component", () => {
     const { getByText, container } = setup();
     expect(getByText(sampleText));
     expect(container.querySelectorAll("svg")).toHaveLength(1);
-  });
-
-  /**
-   * Passing onClickFunction
-   */
-  it("Should pass its onClickFunction to each rendered <SidebarMenuItem />", () => {
-    const { getByText, container } = setup();
-    fireEvent.click(getByText(sampleText));
-    expect(sampleOnClickFunction).toHaveBeenCalledTimes(1);
   });
 });

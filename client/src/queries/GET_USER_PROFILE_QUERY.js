@@ -5,6 +5,7 @@ export const GET_USER_PROFILE_QUERY = gql`
     userProfile(id: $id) {
       firstname
       lastname
+      id
     }
   }
 `;
