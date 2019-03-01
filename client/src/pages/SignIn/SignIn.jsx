@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Helmet } from "react-helmet";
 import Button from "../../components/Button/Button";
 import { GET_CURRENTLY_LOGGED_IN_USER_QUERY } from "../../queries/GET_CURRENTLY_LOGGED_IN_USER_QUERY";
 import Input from "../../components/Input/Input";
@@ -12,50 +12,57 @@ const Signin = ({ history }) => {
   const [password, setPassword] = useState("");
 
   return (
-    <Mutation
-      mutation={SIGNIN_USER_MUTATION}
-      refetchQueries={[{ query: GET_CURRENTLY_LOGGED_IN_USER_QUERY }]}
-    >
-      {(signinUser, { data }) => (
-        <form
-          onSubmit={async e => {
-            e.preventDefault();
-            const {
-              data: {
-                signin: { id }
-              }
-            } = await signinUser({
-              variables: {
-                email,
-                password
-              }
-            });
-            history.push(`/user/${id}`);
-          }}
-        >
-          <>
-            <Input
-              id="Email"
-              label="Email"
-              placeholder=""
-              value={email}
-              onChangeFunction={emailInput => setEmail(emailInput)}
-            />
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>KGSM Tracker - Sign In</title>
+      </Helmet>
 
-            <Input
-              id="Password"
-              label="Password"
-              placeholder=""
-              value={password}
-              type="password"
-              onChangeFunction={passwordInput => setPassword(passwordInput)}
-            />
+      <Mutation
+        mutation={SIGNIN_USER_MUTATION}
+        refetchQueries={[{ query: GET_CURRENTLY_LOGGED_IN_USER_QUERY }]}
+      >
+        {(signinUser, { data }) => (
+          <form
+            onSubmit={async e => {
+              e.preventDefault();
+              const {
+                data: {
+                  signin: { id }
+                }
+              } = await signinUser({
+                variables: {
+                  email,
+                  password
+                }
+              });
+              history.push(`/user/${id}`);
+            }}
+          >
+            <>
+              <Input
+                id="Email"
+                label="Email"
+                placeholder=""
+                value={email}
+                onChangeFunction={emailInput => setEmail(emailInput)}
+              />
 
-            <Button type="submit"> Sign In</Button>
-          </>
-        </form>
-      )}
-    </Mutation>
+              <Input
+                id="Password"
+                label="Password"
+                placeholder=""
+                value={password}
+                type="password"
+                onChangeFunction={passwordInput => setPassword(passwordInput)}
+              />
+
+              <Button type="submit"> Sign In</Button>
+            </>
+          </form>
+        )}
+      </Mutation>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import { HashRouter, Route, Switch } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
-
 import Navigation from "./components/Navigation/Navigation";
 
 /**

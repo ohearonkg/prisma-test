@@ -2,12 +2,13 @@ import React from "react";
 import Calendar from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import moment from "moment";
+import PageHeading from "../../components/PageHeading/PageHeading";
 
 const localizer = Calendar.momentLocalizer(moment);
 
 const Schedule = () => (
   <>
-    <h1> Schedule </h1>
+    <PageHeading> Schedule </PageHeading>
     <Calendar
       localizer={localizer}
       defaultDate={new Date()}

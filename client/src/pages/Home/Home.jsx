@@ -5,6 +5,7 @@ import { ProgramsGrid } from "./styles";
 import PropTypes from "prop-types";
 import { Query } from "react-apollo";
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Home = ({ history }) => {
   const handleNavigation = programId => {
@@ -13,6 +14,11 @@ const Home = ({ history }) => {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>KGSM Tracker</title>
+      </Helmet>
+
       {/* Programs */}
       <Query
         query={GET_PROGRAMS_QUERY}
