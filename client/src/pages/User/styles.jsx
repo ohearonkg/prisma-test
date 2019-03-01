@@ -11,7 +11,7 @@ const PageWrapper = styled.div`
 
 const ContentWraper = styled.div`
   flex: 1 1 auto;
-  padding-left: 20px;
+  margin-left: 20px;
 `;
 
 const CardsWrapper = styled.div`

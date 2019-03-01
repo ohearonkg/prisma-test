@@ -27,13 +27,13 @@ const Tabs = ({ tabs }) => {
 
     /**
      * The current position and width of the tab
-     * on which we have clied
+     * on which we have clicked
      */
     const { x: currentItemLocation, width } = e.target.getBoundingClientRect();
 
-    const underlineLocation = currentItemLocation - wrapperOffset;
+    const underlineLocationStart = currentItemLocation - wrapperOffset;
 
-    setUnderlinePositionStart(underlineLocation);
+    setUnderlinePositionStart(underlineLocationStart);
     setUnderlineWidth(width);
   };
 
@@ -53,7 +53,7 @@ const Tabs = ({ tabs }) => {
       <TabsHeadingWrapper ref={wrapperRef}>
         {tabs.map((navItem, index) => (
           <TabHeading
-            key={index}
+            key={`${navItem.title}-content`}
             onClick={e => handleClick(e, index)}
             active={currentTab === index}
             ref={index === 0 ? firstElementRef : null}
@@ -61,7 +61,6 @@ const Tabs = ({ tabs }) => {
             {navItem.title}
           </TabHeading>
         ))}
-
         <StyledUnderline
           underlinePositionStart={underlinePositionStart}
           underlineWidth={underlineWidth}

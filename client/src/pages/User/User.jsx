@@ -9,12 +9,12 @@ import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
 import Timeline from "@material-ui/icons/Timeline";
 import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
-
 /**
  * Lazily each item to be displayed
  * in the content tab
  */
 const Schedule = lazy(() => import("../Schedule/Schedule"));
+const UserDashboard = lazy(() => import("../UserDashboard/UserDashboard"));
 
 const User = ({ userId, history, match }) => {
   return (
@@ -59,7 +59,7 @@ const User = ({ userId, history, match }) => {
             <Switch>
               <Route
                 path={`${match.path}`}
-                render={() => <h1> Home </h1>}
+                render={() => <UserDashboard />}
                 exact
               />
               <Route
@@ -78,10 +78,10 @@ const User = ({ userId, history, match }) => {
   );
 };
 
-User.PropTypes = {
+User.propTypes = {
   userId: PropTypes.string.isRequired,
   history: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  match: PropTypes.object.isRequired
 };
 export default withRouter(User);
 
