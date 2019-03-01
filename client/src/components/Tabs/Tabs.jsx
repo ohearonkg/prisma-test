@@ -1,28 +1,46 @@
 import React, { useState, useEffect, useRef } from "react";
-import { TabsHeadingWrapper, TabHeading, StyledUnderline } from "./styles";
+import {
+  TabsHeadingWrapper,
+  TabHeading,
+  StyledUnderline,
+  TabContentWrapper
+} from "./styles";
 import PropTypes from "prop-types";
 
 const Tabs = ({ tabs }) => {
   const [currentTab, setCurrentTab] = useState(0);
   const [underlinePositionStart, setUnderlinePositionStart] = useState(0);
   const [underlineWidth, setUnderlineWidth] = useState(0);
+  const wrapperRef = useRef(null);
   const firstElementRef = useRef(null);
 
   const handleClick = (e, index) => {
     setCurrentTab(index);
-    const previousElementWidth =
-      e.target.previousSibling !== null
-        ? e.target.previousSibling.getBoundingClientRect().width
-        : 0;
-    const { width } = e.target.getBoundingClientRect();
-    setUnderlinePositionStart(previousElementWidth);
+
+    /**
+     * Get the offset from the viewport
+     * of our wrapping div
+     */
+    const {
+      x: wrapperOffset
+    } = firstElementRef.current.getBoundingClientRect();
+
+    /**
+     * The current position and width of the tab
+     * on which we have clied
+     */
+    const { x: currentItemLocation, width } = e.target.getBoundingClientRect();
+
+    const underlineLocation = currentItemLocation - wrapperOffset;
+
+    setUnderlinePositionStart(underlineLocation);
     setUnderlineWidth(width);
   };
 
   /**
    * Once the component has mounted we
    * use the reference we have to the first
-   * tab node to determine the inital width
+   * renderd tab node to determine the inital width
    * of the underline
    */
   useEffect(() => {
@@ -32,7 +50,7 @@ const Tabs = ({ tabs }) => {
 
   return (
     <>
-      <TabsHeadingWrapper>
+      <TabsHeadingWrapper ref={wrapperRef}>
         {tabs.map((navItem, index) => (
           <TabHeading
             key={index}
@@ -40,7 +58,7 @@ const Tabs = ({ tabs }) => {
             active={currentTab === index}
             ref={index === 0 ? firstElementRef : null}
           >
-            {navItem.text}
+            {navItem.title}
           </TabHeading>
         ))}
 
@@ -51,13 +69,7 @@ const Tabs = ({ tabs }) => {
       </TabsHeadingWrapper>
 
       {/* Rendered Tab Content */}
-      <div>
-        {tabs.map((navItem, index) => (
-          <div key={index} onClick={e => handleClick(e, index)}>
-            {currentTab === index && navItem.component}
-          </div>
-        ))}
-      </div>
+      <TabContentWrapper>{tabs[currentTab].component}</TabContentWrapper>
     </>
   );
 };
@@ -65,10 +77,10 @@ const Tabs = ({ tabs }) => {
 Tabs.propTypes = {
   tabs: PropTypes.arrayOf(
     PropTypes.shape({
-      text: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
       component: PropTypes.node.isRequired
     })
-  )
+  ).isRequired
 };
 
 export default Tabs;

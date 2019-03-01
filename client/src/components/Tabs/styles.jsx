@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import theme from "../../theme";
 
 const TabsHeadingWrapper = styled.div`
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -33,4 +33,8 @@ const StyledUnderline = styled.div`
   bottom: 0;
 `;
 
-export { TabsHeadingWrapper, TabHeading, StyledUnderline };
+const TabContentWrapper = styled.div`
+  padding-top: 10px;
+`;
+
+export { TabsHeadingWrapper, TabHeading, StyledUnderline, TabContentWrapper };
