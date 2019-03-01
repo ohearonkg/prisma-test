@@ -8,6 +8,8 @@ import { Query } from "react-apollo";
 import SidebarMenu from "../../components/SidebarMenu/SidebarMenu";
 import Timeline from "@material-ui/icons/Timeline";
 import { Helmet } from "react-helmet";
+import PropTypes from "prop-types";
+
 /**
  * Lazily each item to be displayed
  * in the content tab
@@ -76,6 +78,11 @@ const User = ({ userId, history, match }) => {
   );
 };
 
+User.PropTypes = {
+  userId: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
+};
 export default withRouter(User);
 
 //             <SidebarMenuItem
