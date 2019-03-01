@@ -1,0 +1,34 @@
+---
+name: User Dashboard
+---
+
+import UserDashboard from "./UserDashboard";
+import { Playground, PropsTable } from "docz";
+
+# User Dashboard
+
+## Properties
+
+<PropsTable of={UserDashboard} />
+
+## Basic Usage
+
+<Playground>
+  <UserDashboard 
+    navItems={[
+      {
+        text: "CREATE EXERCISE",
+        component: <div>CREATE EXERCISE DIV</div>
+      },
+      {
+        text: "CREATE PROGRAM",
+        component: <div>CREATE PROGRAM DIV </div>
+      },
+      {
+        text: "SCHEDULE PROGRAM",
+        component: <div>SCHEDULE PROGRAM DIV </div>
+      }
+    ]} 
+  />
+
+</Playground>
