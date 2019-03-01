@@ -11,27 +11,24 @@ const CreateExercise = () => {
       {(createExercise, { data }) => (
         <Query query={GET_EXERCISE_TYPES_QUERY}>
           {({ loading, error, data: { __type: enumValues } }) => {
-            if (loading) {
-              return null;
+            if (!loading && !error && enumValues.length > 0) {
+              const exerciseTypes = enumValues.enumValues.map(
+                exerciseType => exerciseType.name
+              );
+              return (
+                <CreateExerciseForm
+                  onSubmitFunction={exerciseData =>
+                    createExercise({
+                      variables: {
+                        ...exerciseData
+                      }
+                    })
+                  }
+                  exerciseTypeOptions={exerciseTypes}
+                />
+              );
             }
-            if (error) {
-              return null;
-            }
-            const exerciseTypes = enumValues.enumValues.map(
-              exerciseType => exerciseType.name
-            );
-            return (
-              <CreateExerciseForm
-                onSubmitFunction={exerciseData =>
-                  createExercise({
-                    variables: {
-                      ...exerciseData
-                    }
-                  })
-                }
-                exerciseTypeOptions={exerciseTypes}
-              />
-            );
+            return null;
           }}
         </Query>
       )}
