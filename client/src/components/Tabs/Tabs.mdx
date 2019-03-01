@@ -1,21 +1,21 @@
 ---
-name: User Dashboard
+name: Tabs
 ---
 
-import UserDashboard from "./UserDashboard";
+import Tabs from "./Tabs";
 import { Playground, PropsTable } from "docz";
 
-# User Dashboard
+# Tabs
 
 ## Properties
 
-<PropsTable of={UserDashboard} />
+<PropsTable of={Tabs} />
 
 ## Basic Usage
 
 <Playground>
-  <UserDashboard 
-    navItems={[
+  <Tabs
+    tabs={[
       {
         text: "CREATE EXERCISE",
         component: <div>CREATE EXERCISE DIV</div>
