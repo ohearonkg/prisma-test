@@ -4,18 +4,22 @@ import UserDashboard from "./UserDashboard";
 
 afterEach(cleanup);
 
-const navigationItems = [
-  "CREATE EXERCISE",
-  "CREATE PROGRAM",
-  "SCHEDULE PROGRAM"
+const sampleNavItems = [
+  {
+    text: "CREATE EXERCISE",
+    component: <div>CREATE EXERCISE DIV</div>
+  },
+  {
+    text: "CREATE PROGRAM",
+    component: <div>CREATE PROGRAM DIV </div>
+  },
+  {
+    text: "SCHEDULE PROGRAM",
+    component: <div>SCHEDULE PROGRAM DIV </div>
+  }
 ];
 
-const setup = () =>
-  render(
-    <UserDashboard
-      navItems={navigationItems.map(navItem => ({ text: navItem }))}
-    />
-  );
+const setup = () => render(<UserDashboard navItems={sampleNavItems} />);
 
 describe("User Dashboard Page", () => {
   /**
@@ -23,25 +27,25 @@ describe("User Dashboard Page", () => {
    */
   it("Should render the navigation items", () => {
     const { getByText } = setup();
-    navigationItems.forEach(navItem => expect(getByText(navItem)));
-  });
-
-  /**
-   * Rendering Navigation Item Title
-   */
-  it("Should render the appropriate title depending upon the navigation item the user selects", async () => {
-    const { getByText, getAllByText } = setup();
-    for (const navItem of navigationItems) {
-      fireEvent.click(getByText(navItem));
-      await wait(() => expect(getAllByText(navItem)).toHaveLength(2));
-    }
+    sampleNavItems.forEach(navItem => expect(getByText(navItem.text)));
   });
 
   /**
    * Rendering First Item as Default
    */
-  it("Should render the first navigation item upon initial render", () => {
-    const { getAllByText } = setup();
-    expect(getAllByText(navigationItems[0])).toHaveLength(2);
+  it("Should render the first navigation item's content upon initial render", () => {
+    const { getByText } = setup();
+    expect(getByText(`${sampleNavItems[0].text} DIV`));
+  });
+
+  /**
+   * Rendering Navigation Item Title
+   */
+  it("Should render the appropriate content depending upon the navigation item the user selects", async () => {
+    const { getByText } = setup();
+    for (const navItem of sampleNavItems) {
+      fireEvent.click(getByText(navItem.text));
+      await wait(() => expect(getByText(`${navItem.text} DIV`)));
+    }
   });
 });

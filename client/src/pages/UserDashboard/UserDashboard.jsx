@@ -12,7 +12,7 @@ const UserDashboard = ({ navItems }) => {
       ))}
 
       <div>
-        <h1>{currentTab.text}</h1>
+        <h1>{currentTab.component}</h1>
       </div>
     </div>
   );
@@ -21,8 +21,10 @@ const UserDashboard = ({ navItems }) => {
 UserDashboard.propTypes = {
   navItems: PropTypes.arrayOf(
     PropTypes.shape({
-      text: PropTypes.string.isRequired
+      text: PropTypes.string.isRequired,
+      component: PropTypes.node.isRequired
     })
   )
 };
+
 export default UserDashboard;
