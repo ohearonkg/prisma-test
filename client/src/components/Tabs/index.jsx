@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import {
   TabsHeadingWrapper,
@@ -12,38 +12,37 @@ import {
  * assigning the correct active prop t
  * to the approprriate title
  */
-export const TabList = ({ children, activeIndex, handleClick }) => (
+export const TabList = ({ children, activeIndex, setActiveIndex }) => (
   <TabsHeadingWrapper>
     {children.map((child, index) =>
       activeIndex === index
         ? React.cloneElement(child, {
             active: true,
             key: `TabHeading-${index}`,
-            handleClick,
+            setActiveIndex,
             index
           })
         : React.cloneElement(child, {
-            handleClick,
+            setActiveIndex,
             index,
             key: `TabHeading-${index}`
           })
     )}
-    <StyledUnderline underlinePositionStart={0} underlineWidth={0} />
   </TabsHeadingWrapper>
 );
 
 TabList.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
   activeIndex: PropTypes.number,
-  handleClick: PropTypes.func
+  setActiveIndex: PropTypes.func
 };
 
 /**
  * Rendering a single child and
  * adding appropriate styles
  */
-export const Tab = ({ children, active, handleClick, index }) => (
-  <TabHeading active={active} onClick={e => handleClick(e, index)}>
+export const Tab = ({ children, active, setActiveIndex, index }) => (
+  <TabHeading active={active} onClick={() => setActiveIndex(index)}>
     {children}
   </TabHeading>
 );
@@ -51,12 +50,7 @@ export const Tab = ({ children, active, handleClick, index }) => (
 Tab.propTypes = {
   children: PropTypes.node.isRequired,
   index: PropTypes.number,
-  handleClick: PropTypes.func
-};
-
-TabList.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.node).isRequired,
-  activeIndex: PropTypes.number
+  setActiveIndex: PropTypes.func
 };
 
 /**
@@ -85,21 +79,20 @@ TabPanel.propTypes = {
 /**
  * The real component
  */
-const Tabs = props => {
+const Tabs = ({ children }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const handleClick = (e, index) => {
-    setActiveIndex(index);
-  };
-
-  const cloned = React.Children.map(props.children, child => {
-    if (
-      child.type.displayName === "TabPanels" ||
-      child.type.displayName === "TabList"
-    ) {
-      return React.cloneElement(child, { activeIndex, handleClick });
+  const cloned = React.Children.map(children, child => {
+    if (child.type === TabPanels) {
+      return React.cloneElement(child, { activeIndex, setActiveIndex });
     }
-    return child;
+    if (child.type === TabList) {
+      return React.cloneElement(child, {
+        activeIndex,
+        setActiveIndex
+      });
+    } else {
+      return child;
+    }
   });
   return <>{cloned}</>;
 };
