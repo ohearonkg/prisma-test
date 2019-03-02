@@ -23,6 +23,10 @@ const TabHeading = styled.span`
   }
 `;
 
+const TabContentWrapper = styled.div`
+  padding-top: 10px;
+`;
+
 const StyledUnderline = styled.div`
   transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
   height: 2px;
@@ -33,8 +37,4 @@ const StyledUnderline = styled.div`
   bottom: 0;
 `;
 
-const TabContentWrapper = styled.div`
-  padding-top: 10px;
-`;
-
-export { TabsHeadingWrapper, TabHeading, StyledUnderline, TabContentWrapper };
+export { TabsHeadingWrapper, TabContentWrapper, StyledUnderline, TabHeading };

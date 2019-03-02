@@ -2,7 +2,7 @@
 name: Tabs
 ---
 
-import Tabs from "./Tabs";
+import Tabs, { TabList, Tab, TabPanels, TabPanel } from "./index";
 import { Playground, PropsTable } from "docz";
 
 # Tabs
@@ -14,21 +14,27 @@ import { Playground, PropsTable } from "docz";
 ## Basic Usage
 
 <Playground>
-  <Tabs
-    tabs={[
-      {
-        title: "CREATE EXERCISE",
-        component: <div>CREATE EXERCISE DIV</div>
-      },
-      {
-        title: "CREATE PROGRAM",
-        component: <div>CREATE PROGRAM DIV </div>
-      },
-      {
-        title: "SCHEDULE PROGRAM",
-        component: <div>SCHEDULE PROGRAM DIV </div>
-      }
-    ]} 
-  />
+  <Tabs>
+    <TabList>
+      <Tab>CREATE EXERCISE</Tab>
+      <Tab>CREATE PROGRAM</Tab>
+      <Tab>SCHEDULE PROGRAM</Tab>
+    </TabList>
 
+    <TabPanels>
+      <TabPanel>
+        <div>CREATE EXERCISE DIV</div>
+      </TabPanel>
+
+      <TabPanel>
+        <div>CREATE PROGRAM DIV</div>
+      </TabPanel>
+
+      <TabPanel>
+        <div>SCHEDULE PROGRAM DIV</div>
+      </TabPanel>
+
+    </TabPanels>
+
+  </Tabs>
 </Playground>
